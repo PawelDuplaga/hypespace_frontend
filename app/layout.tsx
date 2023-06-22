@@ -1,8 +1,19 @@
 import './globals.css'
-import { Inter} from 'next/font/google'
+import { Inter, Lato } from 'next/font/google'
 import TopBar from '@/components/TopBar/TopBar'
 
-const inter = Inter({ subsets: ['latin'] })
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+const lato = Lato({
+  weight : ['100','300','400','700','900'],
+  subsets : ['latin']
+})
+
+
 
 export const metadata = {
   title: 'Create Next App',
@@ -16,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
       <html lang="en">
-        <body className={inter.className}>
+        <body className={lato.className}>
         <TopBar/>
         {children}
         </body>
