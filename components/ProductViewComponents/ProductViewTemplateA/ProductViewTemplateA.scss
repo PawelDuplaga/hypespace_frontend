@@ -1,0 +1,21 @@
+.main-container {
+
+    .product-img {
+        width: 358px;
+        height: 358px;
+    }
+
+    .product-info {
+        display: flex;
+        color: black;
+        margin-top: 24px;
+        gap : 12px;
+
+
+        .arrow {
+            fill: black;
+        }
+    }
+
+
+}

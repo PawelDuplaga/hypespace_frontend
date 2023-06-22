@@ -38,11 +38,15 @@
     align-items: center;
     background-color: var(--gray-1, #333);
 
+    &:hover {
+        background-color : rgb(161, 161, 138)
+    }
+
     .node-button-content {
         display: flex;
         gap: 12px;
         color: white;
-        
+
         .text {
             font-weight: 600;
             font-size: 16px;
