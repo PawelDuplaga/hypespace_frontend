@@ -7,12 +7,20 @@
     align-items: center;
     gap: 32px;
     margin-top: 32px;
-    border :solid 4px rgb(74, 51, 138);
+    // border :solid 4px rgb(74, 51, 138);
 
     .menu {
         display: flex;
         width: 100%;
         justify-content: space-between;
+
+        p { 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
     }
+
 }
 

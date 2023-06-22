@@ -10,14 +10,14 @@ export default function Navbar () {
                     />
                 </div>
                 <div className="menu">
-                    <div>WSZYSTKIE PRODUKTY</div>
-                    <div>NOWOŚĆI</div>
-                    <div>
-                        <img/>
+                    <p>WSZYSTKIE PRODUKTY</p>
+                    <p>NOWOŚĆI</p>
+                    <p>
+                        <img src="./icons/promotion.svg "/>
                         <span>WYPRZEDAŻ</span>
-                    </div>
-                    <div>O NAS</div>
-                    <div>KONTAKT</div>
+                    </p>
+                    <p>O NAS</p>
+                    <p>KONTAKT</p>
                 </div>
             </div>
     )

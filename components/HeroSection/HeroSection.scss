@@ -1,0 +1,26 @@
+.hero-section {
+    width: var(--max-width);
+    max-width: var(--max-width);
+
+    display: flex;
+    align-items: center;
+    gap: 48px;
+
+    .left-node {
+        width: 50%;
+        flex-direction: column;
+
+        .left-text-node{
+
+            .big-text {
+                font-size: 20px;
+            }
+            .small-text {
+                font-size: 10px;
+            }
+        }
+    }
+}
+
+
+  
