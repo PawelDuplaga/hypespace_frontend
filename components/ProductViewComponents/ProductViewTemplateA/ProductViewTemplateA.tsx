@@ -8,9 +8,6 @@ export default function ProductViewTemplateA (product : ProductType) {
     const productPrice : string = "199.00PLN"
     const productPhotoPath : string = "./png/but1.png"
     
-
-
-
     return (
         <div className="Frame-186 main-container">
             <img className="product-img" src={productPhotoPath}/>
