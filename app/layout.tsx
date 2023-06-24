@@ -1,7 +1,19 @@
 import './globals.css'
 import { Inter, Lato } from 'next/font/google'
 import TopBar from '@/components/TopBar/TopBar'
+import Footer from '@/components/Footer/Footer'
+import StoreInfoType from '@/lib/Types/StoreInfoType'
 
+const storeInfo : StoreInfoType = {
+    name : "Hypespace",
+    address: "ul. Krucza 12",
+    address2: "04-697 Warszawa",
+    openingHours : {
+      mondayToFriday : "Pon. - Pt.: 9:00 - 20:00",
+      saturday : "Sob.: 9:00 - 18:00",
+      sunday : "Ndz.: 9:00 - 16:00"
+    }
+}
 
 const inter = Inter({
   subsets: ['latin'],
@@ -29,6 +41,9 @@ export default function RootLayout({
         <body className={lato.className}>
         <TopBar/>
         {children}
+        <Footer
+          {...storeInfo}
+        />
         </body>
       </html>
   )

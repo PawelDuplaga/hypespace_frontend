@@ -1,0 +1,32 @@
+.carousel-container {
+    position: relative;
+    width: 100%;
+    margin-top: 100px;
+    height: 480px;
+    background-color: rgb(223, 192, 151);
+    overflow-x: hidden;
+
+    .moving-div {
+        position: absolute;
+        z-index: 1;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-560px);
+        width: 3000px;
+        height: 460px;
+        background-color: blue;
+        transition: left 1s ease-in-out;
+    }
+}
+
+
+
+.moving-div.animate {
+    z-index: 1;
+    left: 560px;
+  }
+
+.lol {
+    position: absolute;
+    z-index: 2;
+}

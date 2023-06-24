@@ -2,7 +2,7 @@ import './HeroSectionB.scss'
 
 export default function HeroSectionB () {
 
-    const heroBText1 = "Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit"
+    const heroBText1 = "Lorem ipsum dolor sit amet,consectetur adipiscing elit"
     const heroBText2 = "Sed ut perspiciatis unde omnis iste natus error"
 
     return(

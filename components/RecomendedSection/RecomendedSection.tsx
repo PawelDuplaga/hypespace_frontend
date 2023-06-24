@@ -12,25 +12,25 @@ export default function RecomendedSection (products : ProductType[]) {
         id: "3215dszdfsd423",
         name: "Nike A",
         price: 299,
-        description: "Lorem Ipsum Lorem ipsum" },
+        description: "Lorem Ipsum Lorem ipsum", 
+        img : "./png/but1.png"   
+    },
     { 
         id: "3215dszdfsd423",
         name: "Nike B",
         price: 449,
-        description: "Lorem Ipsum Lorem ipsum" },
+        description: "Lorem Ipsum Lorem ipsum", 
+        img : "./png/but1.png"
+    },
     { 
         id: "3215dszdfsd423",
         name: "Nike C",
         price: 599,
-        description: "Lorem Ipsum Lorem ipsum" },
+        description: "Lorem Ipsum Lorem ipsum", 
+        img : "./png/but1.png" 
+    },
     ]
 
-
-    let pro : ProductType = { 
-        id: "3215dszdfsd423",
-        name: "Nike C",
-        price: 599,
-        description: "Lorem Ipsum Lorem ipsum" }
 
     function mapRecomendedSection () {
         return currProducts.map((product) => (
