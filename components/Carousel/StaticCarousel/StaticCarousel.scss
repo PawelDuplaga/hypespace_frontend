@@ -13,11 +13,10 @@
         transform: translateX(-560px);
         width: 3000px;
         height: 460px;
-        transition: transform 2s ease-in-out;
-        background-color: aquamarine;
-
+        transition: transform 0.75s ease-in-out;
+        caret-color: transparent;
         display: flex;
-        gap: 24px;
+        gap: 28px;
 
         // .default {
         //     transform: translateX(-560px);
@@ -44,18 +43,18 @@
 
     .animate0 {
         z-index: 1;
-        transform: translateX(-800px);
+        transform: translateX(-1680px);
     }
 
     .animate1 {
         z-index: 1;
-        transform: translateX(-1000px);
+        transform: translateX(-2800px);
     }
 
-    .animate2 {
-        z-index: 1;
-        transform: translateX(-1200px);
-    }
+    // .animate2 {
+    //     z-index: 1;
+    //     transform: translateX(-1200px);
+    // }
 
     .button-right {
         position: absolute;
