@@ -6,6 +6,7 @@ import HeroSection from '@/components/Hero/HeroSection/HeroSection'
 import RecomendedSection from '@/components/RecomendedSection/RecomendedSection'
 import HeroSectionB from '@/components/Hero/HeroSectionB/HeroSectionB'
 import StaticCarousel from '@/components/Carousel/StaticCarousel/StaticCarousel'
+import ProductViewTemplateB from '@/components/ProductViewComponents/ProductViewTemplateB/ProductViewTemplateB'
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
       <HeroSection/>
       <RecomendedSection/>
       <HeroSectionB/>
-      <StaticCarousel/>
+      <StaticCarousel/>    
     </div>
   )
 }

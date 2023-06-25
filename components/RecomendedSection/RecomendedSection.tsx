@@ -1,13 +1,14 @@
 import ProductViewTemplateA from "../ProductViewComponents/ProductViewTemplateA/ProductViewTemplateA"
 import ProductType from "@/lib/Types/ProductType"
 import './RecomendedSection.scss'
+import Product from "@/lib/Models/Product"
 
 
 
 
-export default function RecomendedSection (products : ProductType[]) {
+export default function RecomendedSection (products : Product[]) {
 
-    let currProducts : ProductType[] = [
+    let currProducts : Product[] = [
     { 
         id: "3215dszdfsd423",
         name: "Nike A",
@@ -17,7 +18,7 @@ export default function RecomendedSection (products : ProductType[]) {
     },
     { 
         id: "3215dszdfsd423",
-        name: "Nike B",
+        name: "Nike CCC",
         price: 449,
         description: "Lorem Ipsum Lorem ipsum", 
         img : "./png/but1.png"
@@ -30,14 +31,14 @@ export default function RecomendedSection (products : ProductType[]) {
         img : "./png/but1.png" 
     },
     ]
-
+    
 
     function mapRecomendedSection () {
+        //currProducts.map((product) => console.log(product))
         return currProducts.map((product) => (
             <ProductViewTemplateA
+               key = {product.id}
                {...product}
-            //    type problem 
-            //    do wytlumaczenia ocb
             />
         ));
     }

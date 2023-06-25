@@ -1,8 +1,8 @@
 import ProductType from "@/lib/Types/ProductType"
 import './ProductViewTemplateA.scss'
+import Product from "@/lib/Models/Product"
 
-
-export default function ProductViewTemplateA (product : ProductType) {
+export default function ProductViewTemplateA (product : Product) {
 
     return (
         <div className="Frame-186 main-container">
