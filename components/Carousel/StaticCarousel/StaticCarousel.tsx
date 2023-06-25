@@ -7,7 +7,6 @@ export default function StaticCarousel () {
 
     const AnimationFazes : string[] = ["default", "animate0", "animate1"]
 
-    const [isAnimating, setIsAnimating] = useState(true);
     const [animationFazeIndex, setAnimationFazeIndex] = useState(0)
     const [buttonsVisibility, setButtonsVisibility] = useState({left : false, right : true})
 
@@ -28,26 +27,18 @@ export default function StaticCarousel () {
             right : animationFazeIndex !== AnimationFazes.length - 1,
             left: animationFazeIndex !== 0
           }));
-      console.log("end")
-      console.log(AnimationFazes[animationFazeIndex])
     };
     
 
     const currProducts : number[] = [1,2,3,4,5,6,7,8,9,10,11,12]
 
-
     function mapRecomendedSection () {
         return currProducts.map((product) => (
             <ProductViewTemplateB
                 key={product}
-
-            //    type problem 
-            //    do wytlumaczenia ocb
             />
         ));
     }
-
-
 
     return (
         <div className='carousel-container'>
@@ -60,7 +51,7 @@ export default function StaticCarousel () {
                 <img className='arrow-icon' src="./icons/maki_arrow.svg" />
             </div>}          
             <div 
-                className={`moving-div ${isAnimating ? AnimationFazes[animationFazeIndex] : ""}`}
+                className={`moving-div ${AnimationFazes[animationFazeIndex]}`}
                 onTransitionEnd={onAnimationEnd}    
             >
                 {mapRecomendedSection()}
