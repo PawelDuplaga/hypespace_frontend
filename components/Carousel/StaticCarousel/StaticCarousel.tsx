@@ -1,7 +1,10 @@
 'use client'
 import './StaticCarousel.scss'
-import { useState } from "react"
+import { ReactNode, use, useEffect, useState } from "react"
 import ProductViewTemplateB from '@/components/ProductViewComponents/ProductViewTemplateB/ProductViewTemplateB';
+import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
+import { medusaClient } from '@/lib/utils/medusaUtils';
+import { getRandomElements } from '@/lib/utils/helpers';
 
 export default function StaticCarousel () {
 
@@ -9,6 +12,23 @@ export default function StaticCarousel () {
 
     const [animationFazeIndex, setAnimationFazeIndex] = useState(0)
     const [buttonsVisibility, setButtonsVisibility] = useState({left : false, right : true})
+    const [products, setProducts] = useState<PricedProduct[]>()
+
+    useEffect( () => {
+        medusaClient.products.list({limit : 3})
+        .then(({ products }) => {
+            setProducts(products)
+            console.log(products)      
+        });
+             
+    }, []);
+
+    
+    
+
+
+    //fetchProduct("prod_01H3AG8SRGNAX2X2E4BRFVERC4")
+    //why error in console when getting data
 
     const handleClickRightButton = () => {
         if(animationFazeIndex < AnimationFazes.length - 1) {
@@ -32,12 +52,18 @@ export default function StaticCarousel () {
 
     const currProducts : number[] = [1,2,3,4,5,6,7,8,9,10,11,12]
 
-    function mapRecomendedSection () {
-        return currProducts.map((product) => (
+    function mapRecomendedSection ()  {
+        //prowizorka
+        if( products != undefined )
+        return (currProducts.map((product) => (
             <ProductViewTemplateB
                 key={product}
+                title={products[0].title}
+                thumbnail={products[0].thumbnail}
+                variants={products[0].variants}
+            
             />
-        ));
+        )))
     }
 
     return (
