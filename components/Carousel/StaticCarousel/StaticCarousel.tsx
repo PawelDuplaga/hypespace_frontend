@@ -6,24 +6,17 @@ import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import { medusaClient } from '@/lib/utils/medusaUtils';
 import { getRandomElements } from '@/lib/utils/helpers';
 
-export default function StaticCarousel () {
+type ProductProps = {
+    products : PricedProduct []
+}
+
+const StaticCarousel : React.FC<ProductProps> = ({products}) => {
 
     const AnimationFazes : string[] = ["default", "animate0", "animate1"]
 
     const [animationFazeIndex, setAnimationFazeIndex] = useState(0)
     const [buttonsVisibility, setButtonsVisibility] = useState({left : false, right : true})
-    const [products, setProducts] = useState<PricedProduct[]>()
 
-    useEffect( () => {
-        medusaClient.products.list({limit : 3})
-        .then(({ products }) => {
-            setProducts(products)
-            console.log(products)      
-        });
-             
-    }, []);
-
-    
     const handleClickRightButton = () => {
         if(animationFazeIndex < AnimationFazes.length - 1) {
             setAnimationFazeIndex(prev => prev +1)
@@ -44,16 +37,20 @@ export default function StaticCarousel () {
     };
     
 
-    const currProducts : number[] = [1,2,3,4,5,6,7,8,9,10,11,12]
+    // prowizorka bo za malo produktow w bazie
+    const currProducts : PricedProduct [] = products
+    if (products.length < 12) {
+        for(let i = 0; i < 12; i ++){
+            currProducts[i] = products[0]
+        }
+    }
+
 
     function mapRecomendedSection ()  {
-        //prowizorka
-        if( products != undefined )
         return (currProducts.map((product) => (
             <ProductViewTemplateB
-                key={product}
-                product={products[0]}
-            
+                key={product.id}
+                product={product}  
             />
         )))
     }
@@ -76,5 +73,7 @@ export default function StaticCarousel () {
             </div>
         </div>
     )
-
 }
+
+
+export default StaticCarousel;

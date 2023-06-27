@@ -1,6 +1,4 @@
-import ProductType from "@/lib/Types/ProductType"
 import './ProductViewTemplateA.scss'
-import Product from "@/lib/Models/Product"
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 
 type ProductProps = {
