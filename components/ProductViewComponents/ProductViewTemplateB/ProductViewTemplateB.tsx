@@ -8,7 +8,7 @@ type ProductProps = {
 }
 
 const ProductViewTemplateB : React.FC<ProductProps>  = ({product : {title, thumbnail, variants}}) =>{
-    
+
     let defaultVariantPrice = variants[0].prices[0]
 
     return (
