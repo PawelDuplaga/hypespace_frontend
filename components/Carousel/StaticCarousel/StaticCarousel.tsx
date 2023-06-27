@@ -24,12 +24,6 @@ export default function StaticCarousel () {
     }, []);
 
     
-    
-
-
-    //fetchProduct("prod_01H3AG8SRGNAX2X2E4BRFVERC4")
-    //why error in console when getting data
-
     const handleClickRightButton = () => {
         if(animationFazeIndex < AnimationFazes.length - 1) {
             setAnimationFazeIndex(prev => prev +1)
@@ -58,9 +52,7 @@ export default function StaticCarousel () {
         return (currProducts.map((product) => (
             <ProductViewTemplateB
                 key={product}
-                title={products[0].title}
-                thumbnail={products[0].thumbnail}
-                variants={products[0].variants}
+                product={products[0]}
             
             />
         )))
