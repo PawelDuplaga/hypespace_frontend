@@ -1,0 +1,121 @@
+.footerMainContainer {
+    position: relative;
+    width: 100%;
+    background-color: #333333;
+    height: 666px;
+    margin-top: 100px;
+    padding-top: 48px;
+    display: flex;
+    justify-content: center;
+
+    .footerMarginsContainer {
+        position: relative;
+        max-width: var(--max-width);
+        width: var(--max-width);
+        display: flex;
+        flex-direction: column;
+        gap:48px;
+
+        color: aliceblue;
+
+        .logoNode {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            height: 50px;
+            //do obgadania - dziwne zachowanie polaczenia css i Image
+            
+            .logoImg {
+                position: relative;
+            }
+
+        }
+
+        .splitLine {
+            border-style: solid;
+            border-color: rgba(255, 255, 255, 0.2);
+            border-width: 1px 0 0 0;
+            width: 1120px;
+            height: 0px;
+            position: relative;
+            transform-origin: 0 0;
+            transform: rotate(0deg) scale(1, 1);
+        }
+
+        .infoBracket {
+            display: flex;
+            flex-direction: column;
+            gap : 48px;
+
+            .infoBracketTopPart {
+                width: var(--max-width);
+                display: flex;
+                justify-content: space-between;
+                
+                .flexShopInfo {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 24px;
+                }
+
+                .categoryTitle {
+                    font-size: 16px;
+                    color: white;
+                    font-weight: 700;
+                }
+
+                .categoryTitleSklep {
+                    font-size: 16px;
+                    color: white;
+                    font-weight: 700;
+                    opacity: 45%;
+                }
+
+                .flexCompanyAddress {
+                    display: flex;
+                    flex-direction: column;
+                    gap:6px
+                }
+                
+                .flexCategory {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 24px;
+                }
+
+                .flexCategory2{
+                    display: flex;
+                    flex-direction: column;
+                    gap : 12px;
+                }
+                // to mozna uproscic ala tailwind - wyznaczyc klasy np dla flex i flex-column
+            }  
+
+            .InfoBracketBottomPart {
+                width: var(--max-width);
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+                
+
+                .NamesLogosPart{
+                    display: flex;
+                    justify-content: space-between;
+                    position: relative;
+                    height: 24px;
+                    
+                    .paymentAgents {
+                        display: flex;
+                        gap : 24px;
+                        position: relative;
+
+                    }
+                }
+            }
+
+        }
+
+        
+    }
+}
+

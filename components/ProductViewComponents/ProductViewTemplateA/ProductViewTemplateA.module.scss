@@ -1,0 +1,22 @@
+.mainContainer {
+
+    .producImgContainer {
+        width: 340px;
+        height: 340px;
+
+
+        max-width: 358px;
+        max-height: 358px;
+    }
+
+    .productInfo {
+        display: flex;
+        align-items: center;
+        color: black;
+        margin-top: 24px;
+        gap : 12px;
+
+    }
+
+
+}

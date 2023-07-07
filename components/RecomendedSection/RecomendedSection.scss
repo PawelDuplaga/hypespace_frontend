@@ -1,0 +1,28 @@
+.recomended-container {
+    max-width: var(--max-width);
+    width: var(--max-width);
+
+    margin-top: 130px;
+    display: flex;
+    flex-direction: column;
+    gap : 24px;
+
+    caret-color: transparent;
+
+    .section-title {
+        font-size: 32px;
+        font-weight: 500;
+        color: var(--dark-primary, #2B2A2B);
+    }
+
+    .product-list {
+        display: flex;
+        font-size: 20px;
+        justify-content: space-between;
+        min-height: 358px;
+    }
+
+    // jak rozwiazuje sie problem np 3 rowne czesci na szerokosci X
+
+}
+

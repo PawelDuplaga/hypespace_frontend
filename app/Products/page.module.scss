@@ -1,0 +1,23 @@
+.productPageMain {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+.productGridContainer {
+    
+    display: flex;
+    flex-direction: column;
+    margin-top: 200px;
+    gap : 16px;
+
+
+
+    .productRow {
+        display: flex;
+        gap : 16px;
+    }
+
+}

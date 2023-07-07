@@ -1,0 +1,77 @@
+.heroSection {
+    width: var(--max-width);
+    max-width: var(--max-width);
+    margin-top: 70px;
+    height: 350px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+
+    .leftNode {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+        width: 560px;
+
+
+
+        .textNode{
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+
+            .bigText {
+                font-size: 42px;
+            }
+            .smallText {
+                font-size: 20px;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .rightNode {
+        position: relative;
+        height: 100%;
+        width: 50%;
+    }
+}
+
+.nodeButton {
+    height: 50px;
+    width: 260px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gray-1, #333);
+    border : none;
+    padding: 0;
+
+
+    &:hover {
+        background-color : rgb(161, 161, 138)
+    }
+
+    .nodeButtonContent {
+        display: flex;
+        gap: 12px;
+        color: white;
+        justify-content: center;
+        align-items: center;
+
+        .text {
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+
+  
