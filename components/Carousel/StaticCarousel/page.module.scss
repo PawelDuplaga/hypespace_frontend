@@ -1,11 +1,11 @@
-.carousel-container {
+.carouselContainer {
     position: relative;
     width: 100%;
     margin-top: 100px;
     height: 480px;
-    overflow-x: hidden;
+    // overflow-x: hidden;
 
-    .moving-div {
+    .movingDiv {
         position: absolute;
         z-index: 1;
         top: 10px;
@@ -16,24 +16,7 @@
         transition: transform 0.75s ease-in-out;
         caret-color: transparent;
         display: flex;
-        gap: 28px;
-
-        // .default {
-        //     transform: translateX(-560px);
-        // }
-
-        // .animate0 {
-        //     transform: translateX(-1100px);
-        // }
-
-        // .animate1 {
-        //     transform: translateX(-1100px);
-        // }
-
-        // .animate3 {
-        //     transform: translateX(-100px);
-        // }
-    
+        gap: 20px;
     }
 
     .default {
@@ -51,12 +34,8 @@
         transform: translateX(-2800px);
     }
 
-    // .animate2 {
-    //     z-index: 1;
-    //     transform: translateX(-1200px);
-    // }
 
-    .button-right {
+    .buttonRight {
         position: absolute;
         z-index: 2;
         left: 50%;
@@ -64,6 +43,7 @@
         height: 50px;
         width: 50px;
         border-radius: 30px;
+        border: 0px;
         transform: translateX(560px);
 
         display: flex;
@@ -73,7 +53,7 @@
         background-color: antiquewhite;
         
 
-        .arrow-icon {
+        .arrowIconRight {
             fill: black;
             height: 20px;
             width: 20px;
@@ -81,7 +61,7 @@
 
     }
 
-    .button-left {
+    .buttonLeft {
         position: absolute;
         z-index: 2;
         left: 50%;
@@ -89,8 +69,11 @@
         height: 50px;
         width: 50px;
         border-radius: 30px;
+        border : 0px;
         transform: translateX(-560px);
         
+
+
         display: flex;
         align-items: center;
         justify-content: center;
@@ -98,7 +81,7 @@
         background-color: antiquewhite;
         
 
-        .arrow-icon {
+        .arrowIconLeft {
             fill: black;
             height: 20px;
             width: 20px;

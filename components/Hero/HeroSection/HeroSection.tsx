@@ -1,8 +1,7 @@
-'use client'
-import './HeroSection.scss'
+import styles from './page.module.scss'
+import Image from 'next/image'
 
-
-export default function HeroSection () {
+const HeroSection : React.FC = () => {
 
     const heroText1 = "Twoj but czeka na Ciebie"
     const heroText2 = "Odkryj naszą bogatą ofertę dla sneakerheadów"
@@ -14,23 +13,31 @@ export default function HeroSection () {
 
 
     return (
-        <div className="Frame-1229 hero-section">
-            <div className="Frame-1228 left-node">
-                <div className="Frame-376 text-node">
-                    <div className='Frame-64 big-text'>{heroText1}</div>
-                    <div className='Frame194 small-text'>{heroText2}</div>
+        <div className={styles.heroSection}>
+            <div className={styles.leftNode}>
+                <div className={styles.textNode}>
+                    <div className={styles.bigText}>{heroText1}</div>
+                    <div className={styles.smallText}>{heroText2}</div>
                 </div>
-                <div className='Frame-1227 node-button'>
-                    <div className='Frame-110 node-button-content'>
-                        <div onClick={handleClick} className='text'>{heroButtonText}</div>
-                        <img src="./icons/arrow-right-1.svg" className='button-arrow'/>
+                <button className={styles.nodeButton}>
+                    <div className={styles.nodeButtonContent}>
+                        <div onClick={handleClick} className={styles.text}>{heroButtonText}</div>
+                        <img src="./icons/arrow-right-1.svg" alt='arrow-icon'/>
                     </div>
-                </div>
+                </button>
             </div>
-            <div className="hero-1">
-                <img src = "./png/hero1.png" />
+            <div className={styles.rightNode}>
+                <Image 
+                src="/png/hero1.png" 
+                alt='hero-img-jordan-one-blue' 
+                width={1000}
+                height={1000}
+                style={{height: '100%', width : '100%', objectFit : 'contain'}}
+                />
             </div>
         </div>
     )
 
 }
+
+export default HeroSection

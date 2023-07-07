@@ -1,4 +1,4 @@
-    .hero-container {
+    .heroContainer {
     max-width: var(--max-width);
     width: var(--max-width);
     margin-top: 130px;
@@ -7,13 +7,12 @@
     display: flex;
     gap: 41px;
 
-    .hero-picture {
-        height: 500px;
-        width: 500px;
+    .heroImgContainer {
+        height: 490px;
         object-fit: cover;
     }
 
-    .hero-right-node{
+    .heroRightNode{
         display: flex;
         flex-direction: column;
         padding-top:120px;
@@ -21,28 +20,31 @@
         gap: 48px;
         color: var(--dark-primary, #2B2A2B);
 
-        .text-container{
+        .textContainer{
             display: flex;
             flex-direction: column;
             gap: 24px;
             max-width: 450px; 
             // czy jest jakis css na przenoszenie calych tekstow po przecinku ? XD
 
-            .big-text {
+            .bigText {
                 font-size: 32px;
                 font-weight: 500;
             }
 
-            .small-text {
+            .smallText {
                 font-size: 16px;
                 font-weight: 500;
             }
 
         }
 
-        .button-container {
+        .buttonContainer {
             display: flex;
-            gap : 12px
+            gap : 12px;
+            border : none;
+            width: 200px;
+            background-color: transparent;
         }
     }
 

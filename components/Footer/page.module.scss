@@ -1,4 +1,5 @@
-.footer-main-ontainer {
+.footerMainContainer {
+    position: relative;
     width: 100%;
     background-color: #333333;
     height: 666px;
@@ -7,7 +8,8 @@
     display: flex;
     justify-content: center;
 
-    .footer-margins-container {
+    .footerMarginsContainer {
+        position: relative;
         max-width: var(--max-width);
         width: var(--max-width);
         display: flex;
@@ -16,11 +18,20 @@
 
         color: aliceblue;
 
-        .logo-node {
-            img { height: 50px; }
+        .logoNode {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            height: 50px;
+            //do obgadania - dziwne zachowanie polaczenia css i Image
+            
+            .logoImg {
+                position: relative;
+            }
+
         }
 
-        .split-line {
+        .splitLine {
             border-style: solid;
             border-color: rgba(255, 255, 255, 0.2);
             border-width: 1px 0 0 0;
@@ -31,48 +42,48 @@
             transform: rotate(0deg) scale(1, 1);
         }
 
-        .info-bracket {
+        .infoBracket {
             display: flex;
             flex-direction: column;
             gap : 48px;
 
-            .top-part {
+            .infoBracketTopPart {
                 width: var(--max-width);
                 display: flex;
                 justify-content: space-between;
                 
-                .flex-shop-info {
+                .flexShopInfo {
                     display: flex;
                     flex-direction: column;
                     gap: 24px;
                 }
 
-                .category-title {
+                .categoryTitle {
                     font-size: 16px;
                     color: white;
                     font-weight: 700;
                 }
 
-                .category-title-SKLEP {
+                .categoryTitleSklep {
                     font-size: 16px;
                     color: white;
                     font-weight: 700;
                     opacity: 45%;
                 }
 
-                .flex-company-address {
+                .flexCompanyAddress {
                     display: flex;
                     flex-direction: column;
                     gap:6px
                 }
                 
-                .flex-column {
+                .flexCategory {
                     display: flex;
                     flex-direction: column;
                     gap: 24px;
                 }
 
-                .flex-1{
+                .flexCategory2{
                     display: flex;
                     flex-direction: column;
                     gap : 12px;
@@ -80,20 +91,24 @@
                 // to mozna uproscic ala tailwind - wyznaczyc klasy np dla flex i flex-column
             }  
 
-            .bottom-part {
+            .InfoBracketBottomPart {
                 width: var(--max-width);
                 display: flex;
                 flex-direction: column;
                 gap: 24px;
                 
 
-                .name-logos-part{
+                .NamesLogosPart{
                     display: flex;
                     justify-content: space-between;
+                    position: relative;
+                    height: 24px;
                     
-                    .payment-agents {
+                    .paymentAgents {
                         display: flex;
                         gap : 24px;
+                        position: relative;
+
                     }
                 }
             }
@@ -103,3 +118,4 @@
         
     }
 }
+

@@ -1,4 +1,6 @@
 .product-view-main-container {
+    max-width: 260px;
+    max-height: 460px;
     width: 260px;
     height: 460px;
     background-color: rgb(255, 255, 255);
@@ -8,7 +10,7 @@
 
     .product-img {
         height: 247px;
-        width: 100%;
+        width: 260px;
         object-fit: cover;
     }
 

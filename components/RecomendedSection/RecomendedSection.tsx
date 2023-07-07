@@ -1,5 +1,3 @@
-'use client'
-
 import ProductViewTemplateA from "../ProductViewComponents/ProductViewTemplateA/ProductViewTemplateA"
 import './RecomendedSection.scss'
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
@@ -10,7 +8,7 @@ type ProductProps = {
 
 const RecomendedSection : React.FC<ProductProps> = ({products}) => {
 
-    if (products.length > 3)
+    if ( products != undefined && products.length > 3)
     products = products.slice(0,3)
 
     function mapRecomendedSection () {

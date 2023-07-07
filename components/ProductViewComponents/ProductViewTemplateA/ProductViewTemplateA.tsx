@@ -1,21 +1,38 @@
-import './ProductViewTemplateA.scss'
+import styles from './ProductViewTemplateA.module.scss'
+import Image from 'next/image'
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
+import { formatVariantPrice } from "medusa-react"
+import getRegion from '@/lib/const/regionInfo'
 
 type ProductProps = {
     product : PricedProduct
 }
 
-const ProductViewTemplateA : React.FC<ProductProps> = ({product : {title, thumbnail, variants}}) => {
-
-    let defaultVariantPrice = variants[0].prices[0]
+const ProductViewTemplateA = ({product : {title, thumbnail, variants}} : ProductProps) => {
 
     return (
-        <div className="Frame-186 main-container">
-            <img className="product-img" src={thumbnail as string}/>
-            <div className="Frame-144 product-info">
-                <p>{title} ({(defaultVariantPrice.amount/100).toFixed(2)} {defaultVariantPrice.currency_code})</p>
-                <img className="arrow" src="./icons/maki_arrow.svg"/>
+        <div className={styles.mainContainer}>
+            <div className={styles.producImgContainer}>
+               { thumbnail && 
+                <Image 
+                    src={thumbnail as string} 
+                    alt={thumbnail}
+                    width={1000}
+                    height={1000}
+                    style={{width: '100%', height:'100%', objectFit: 'cover'}}
+                /> }
             </div>
+            { variants &&
+            <div className={styles.productInfo}>
+                <p>{title} {formatVariantPrice({variant: variants[0], region : getRegion()})}</p> 
+                <Image 
+                    className={styles.arrow} 
+                    src="/icons/maki_arrow.svg"
+                    alt='maki-arrow-icon'
+                    width={18}
+                    height={18}       
+                /> 
+            </div> }
         </div>
     )
 

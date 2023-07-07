@@ -1,4 +1,5 @@
-.navbar {
+.navbarContainer {
+    position: relative;
     width: var(--max-width);
     max-width: var(--max-width);
 
@@ -8,11 +9,18 @@
     gap: 32px;
     margin-top: 32px;
     // border :solid 4px rgb(74, 51, 138);
+    
+    .logoContainer{
+        height: 60px;
+        position: relative;
+    }
+
 
     .menu {
         display: flex;
         width: 100%;
         justify-content: space-between;
+        text-transform: uppercase;
 
         p { 
             display: flex;
@@ -20,6 +28,13 @@
             justify-content: center;
             gap: 6px;
         }
+    }
+
+    .itemsBasketIcon {
+        position: absolute;
+        right: 0px;
+        top : 27px;
+        
     }
 
 }

@@ -9,11 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@medusajs/medusa": "^1.12.1",
     "@medusajs/medusa-js": "^6.0.1",
     "@next/font": "^13.4.6",
+    "@tanstack/react-query": "^4.29.19",
     "@types/node": "20.3.1",
     "@types/react": "18.2.13",
     "@types/react-dom": "18.2.6",
+    "classnames": "^2.3.2",
+    "medusa-react": "^9.0.1",
     "next": "13.4.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",

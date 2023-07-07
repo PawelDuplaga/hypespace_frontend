@@ -1,42 +1,48 @@
-import './Navbar.scss'
+import styles from './Navbar.module.scss'
 import Image from 'next/image'
-import React, { ReactNode } from 'react';
+import { useMemo } from 'react';
+import navbarOptions from '@/lib/const/navbarOptions';
 
-type NavOptions = {
-    name : string,
-    icon : string
-} 
 
 
 export default function Navbar () {
 
-    const navbarList : NavOptions[] = [
-        {name : "WSZYSTKIE PRODUKTY", icon : ""},
-        {name : "NOWOŚĆI", icon : ""},
-        {name : "WYPRZEDAŻ", icon : "./icons/promotion.svg"},
-        {name : "O NAS ", icon : ""},
-        {name : "KONTAKT", icon : ""}
-    ]
+    const mappedNav = useMemo(() => mapNavbarOptions(), []);
 
-    function mapNavbarOptions() : ReactNode {
+    function mapNavbarOptions() {
         return (
-        navbarList.map(navbarOption => (
+            navbarOptions.map(navbarOption => (
             <p key={navbarOption.name}>
-              {navbarOption.icon.length > 0 && <img src={navbarOption.icon} alt={navbarOption.name} />}
+              {navbarOption.icon && <Image src={navbarOption.icon} alt={navbarOption.name} width={20} height={20}/>}
               <span>{navbarOption.name}</span>
             </p>
         )))}
         
 
     return (
-            <div className="Frame-394 navbar">
-                <div className="logo">
-                    <img src = "./png/Hypespace.png"/>
+            <div className={styles.navbarContainer}>
+                <div className={styles.logoContainer}>
+                    <Image 
+                        src="/png/Hypespace.png" 
+                        alt='hypespace-logo'
+                        height={1000}
+                        width={1000}
+                        style={{height:'100%', width:'auto'}}
+                    />
                 </div>
-                <div className="menu">
-                    {mapNavbarOptions()}
+                <div className={styles.menu}>
+                    {mappedNav}
+                </div>
+                <div className={styles.itemsBasketIcon}>
+                    <Image 
+                        src="./icons/maki_arrow.svg"
+                        alt='maki-arrow-icon'
+                        height={20}
+                        width={20}       
+                    />
                 </div>
             </div>
     )
     
 }
+

@@ -1,28 +1,47 @@
 'use client'
 
-import Image from 'next/image'
 import styles from './page.module.css'
-import TopBar from '../components/TopBar/TopBar'
 import Navbar from '@/components/Navbar/Navbar'
 import HeroSection from '@/components/Hero/HeroSection/HeroSection'
 import RecomendedSection from '@/components/RecomendedSection/RecomendedSection'
 import HeroSectionB from '@/components/Hero/HeroSectionB/HeroSectionB'
 import StaticCarousel from '@/components/Carousel/StaticCarousel/StaticCarousel'
-import ProductViewTemplateB from '@/components/ProductViewComponents/ProductViewTemplateB/ProductViewTemplateB'
 import { medusaClient } from '@/lib/utils/medusaUtils'
-import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
+import { PricedProduct, PricedVariant } from "@medusajs/medusa/dist/types/pricing"
 import { useState, useEffect } from 'react'
 
 
+type PricedProductProps = {
+    title? : string | null | undefined,
+    thumbnail? : string | null | undefined,
+    variants? : PricedVariant []
+}
+
 function Home () {
 
-  const [recommendedProducts, setRecommendedProducts] = useState<PricedProduct[]>()
-  const [carouselProducts, setCarouselProducts] = useState<PricedProduct[]>()
+  function getMockProducts (numberOfProducts : number) {
+    const defaultProducts: PricedProductProps[] = [];
+    for (let i = 0; i < numberOfProducts; i++) {
+      const defaultProduct: PricedProductProps = {
+        title: "",
+        thumbnail: "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",  
+      };
+      defaultProducts.push(defaultProduct);
+    }
+    return defaultProducts;
+  }
+
+  const [recommendedProducts, setRecommendedProducts] = useState<PricedProductProps[]>(getMockProducts(3))
+  const [carouselProducts, setCarouselProducts] = useState<PricedProductProps[]>(getMockProducts(12))
 
   useEffect( () => {
     medusaClient.products.list({limit : 3})
     .then(({ products }) => {
-        setRecommendedProducts(products)  
+        setRecommendedProducts(products.map((prod) => ({
+          title: prod.title,
+          thumbnail: prod.thumbnail,
+          variants: prod.variants || [] 
+        })));
         setCarouselProducts(products)
     });
     
@@ -30,13 +49,10 @@ function Home () {
 
   return (
     <div className={styles.main}>
-      <Navbar/>
       <HeroSection/>
-      { recommendedProducts != undefined && 
-      <RecomendedSection products={recommendedProducts} />}
+      <RecomendedSection products={recommendedProducts} />
       <HeroSectionB/>
-      { carouselProducts != undefined && 
-      <StaticCarousel products={carouselProducts}/> }
+      <StaticCarousel products={carouselProducts}/> 
     </div>
   )
 }
