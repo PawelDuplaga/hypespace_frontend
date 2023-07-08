@@ -1,35 +1,44 @@
-import { defaultMaxListeners } from 'events'
-import './ProductViewTemplateB.scss'
+import styles from './ProductViewTemplateB.module.scss'
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
+import Image from 'next/image'
+import { formatVariantPrice } from "medusa-react"
+import getRegion from '@/lib/const/regionInfo'
 
 
 type ProductProps = {
     product : PricedProduct
 }
 
-const ProductViewTemplateB : React.FC<ProductProps>  = ({product : {title, thumbnail, variants}}) =>{
-
-    let defaultVariantPriceAmount : number 
-    let defaultVariantPriceCode : string 
-
-    if (variants != undefined){
-        defaultVariantPriceAmount = variants[0].prices[0].amount
-        defaultVariantPriceCode = variants[0].prices[0].currency_code
-    }
+const ProductViewTemplateB = ({product : {title, thumbnail, variants}} : ProductProps) =>{
 
     return (
-        <div className='product-view-main-container'>
-            <img className='product-img' src={thumbnail as string} alt={title}/>
-            <div className='product-info-container'>
-                <div className='Frame-102 product-info'>
-                    <div className='Frame-68 product-name-flex'>
-                        <p className='product-name'>{title}</p>
+        <div className={styles.productViewMainContainer}>
+            <div className={styles.productImageContainer}>
+                <Image 
+                    src={thumbnail as string} 
+                    alt={title as string}
+                    width={1000}
+                    height={1000}
+                    style={{width:'100%', height:'auto', objectFit:'cover'}} 
+                />
+            </div>
+            <div className={styles.productInfoContainer}>
+                <div className={styles.productInfo}>
+                    <div className={styles.productNameFlexbox}>
+                        <p className={styles.productName}>{title}</p>
                     </div>
-                    <div className='Frame-74 flex-1'>
-                        <p className='product-price'>{(defaultVariantPriceAmount/100).toFixed(2)} {defaultVariantPriceCode}</p>
-                        <div className='basket-circle-icon'>
-                            <div className='circle'>
-                                <img className="cart-icon" src="./icons/cart.svg"/>
+                    <div className={styles.productPriceFlexbox}>
+                        { variants &&
+                        <p className={styles.productPrice}>{formatVariantPrice({variant: variants[0], region : getRegion()})}</p> }
+                        <div className={styles.basketCircleIcon}>
+                            <div className={styles.circle}>
+                                <Image 
+                                    className='basketIcon'
+                                    src="./icons/cart.svg"
+                                    alt='basket-icon'
+                                    width={24}
+                                    height={24}
+                                />
                             </div>
                         </div>
                     </div>

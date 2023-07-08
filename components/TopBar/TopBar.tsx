@@ -1,50 +1,48 @@
-import './TopBar.scss'
+import styles from './TopBar.module.scss'
 import Image from 'next/image'
 
-export default function TopBar () {
+const TopBar = () => {
 
     const text1 : string = "Wysyłka w 24h"
     const text2 : string = "Sklep stacjonarny - Warszawa"
     const telefon : string = "111 222 333"
-
-    const sendIcon_path = "./icons/send.svg"
-    const shopIcon_path = "./icons/shop.svg"
-    const callIcon_path = "./icons/call.svg"
-
+    
     return (
-            <div className="topbar">
-                <div className="frame-47 topbar-flex">
-                    <div className='frame-28'>
+            <div className={styles.topbarContainer}>
+                <div className={styles.topbarMainFlexbox}>
+                    <div className={styles.flex28}>
                         <Image
-                            src={sendIcon_path}
+                            src="/icons/send.svg"
                             width={16}
                             height={16}
-                            alt=''
+                            alt='send-icon'
                         />
-                        <p className='text'>{text1}</p>
+                        <p>{text1}</p>
                     </div>
-                    <div className="frame-27">
-                        <div className='frame-21'>
+                    <div className={styles.flex27}>
+                        <div className={styles.flex21}>
                             <Image
-                                src={shopIcon_path}
+                                src="/icons/shop.svg"
                                 width={16}
                                 height={16}
-                                alt=''
+                                alt='shop-icon'
                             />
-                            <p className='text'>{text2}</p>
+                            <p>{text2}</p>
                         </div>
-                        <div className='line-1'></div>
-                        <div className='frame-22'>
+                        <div className={styles.line1}></div>
+                        <div className={styles.flex22}>
                             <Image
-                                src={callIcon_path}
+                                src="/icons/call.svg"
                                 width={16}
                                 height={16}
-                                alt='Kontakt'
+                                alt='phone-icon'
                             />
-                            <p className='text'>{telefon}</p>
+                            <p>{telefon}</p>
                         </div>
                     </div>
                 </div>
             </div>
     )
 }
+
+export default TopBar

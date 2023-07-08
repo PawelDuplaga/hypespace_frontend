@@ -1,4 +1,4 @@
-.product-view-main-container {
+.productViewMainContainer {
     max-width: 260px;
     max-height: 460px;
     width: 260px;
@@ -8,62 +8,62 @@
     display: flex;
     flex-direction: column;
 
-    .product-img {
-        height: 247px;
+    .productImageContainer {
+        position: relative;
         width: 260px;
-        object-fit: cover;
     }
 
-    .product-info-container {
+
+    .productInfoContainer {
         padding-top: 44px;
         padding-left: 16px;
         padding-right: 16px;
     }
 
-    .product-info {
+    .productInfo {
         display: flex;
         flex-direction: column;
         gap : 16px;
 
-        .product-name-flex{
+        .productNameFlexbox{
             display: flex;
             padding: 0.336px 0px 21.664px 0px;
 
-            .product-name {
+            .productName {
                 font-size: 18px;
                 color: var(--dark-primary, #2B2A2B);
             }
         }
     }
     
-    .flex-1 {
+    .productPriceFlexbox {
         display: flex;
         align-items: center;
         justify-content: space-between;
 
-        .product-price {
+        .productPrice {
             font-size: 18px;
             color: var(--dark-primary, #2B2A2B);
         }
     }
 
-    .circle {
-        height: 45px;
-        width: 45px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 2px solid black;
-        border-radius: 30px;
+    
+    .basketCircleIcon {
 
-        .cart-icon {
-            width: 23.33px;
-            height: 23.33px;
+        .circle {
+            height: 45px;
+            width: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+            border-radius: 30px;
+    
+            &:hover {
+                
+            }
         }
 
-
-        &:hover {
-            
-        }
     }
+
 }
