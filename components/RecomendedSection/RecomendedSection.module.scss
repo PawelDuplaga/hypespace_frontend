@@ -1,4 +1,4 @@
-.recomended-container {
+.recomendedContainer {
     max-width: var(--max-width);
     width: var(--max-width);
 
@@ -9,13 +9,13 @@
 
     caret-color: transparent;
 
-    .section-title {
+    .sectionTitle {
         font-size: 32px;
         font-weight: 500;
         color: var(--dark-primary, #2B2A2B);
     }
 
-    .product-list {
+    .productList {
         display: flex;
         font-size: 20px;
         justify-content: space-between;

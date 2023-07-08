@@ -22,10 +22,10 @@
         justify-content: space-between;
         text-transform: uppercase;
 
-        p { 
+        .optionContainer {
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             gap: 6px;
         }
     }
@@ -33,9 +33,40 @@
     .itemsBasketIcon {
         position: absolute;
         right: 0px;
-        top : 27px;
-        
-    }
+        top : 27px;    
 
+        .basketCircle {
+            position: absolute;
+            left :20px;
+            top: -6px;
+            justify-content: center;
+            align-items: center;
+
+            height: 20px;
+            width: 20px;
+
+            background-color: red;
+            border : none;
+            border-radius: 20px;
+
+
+            .basketCount {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+
+                font-size: 13px;
+                line-height: normal;
+                font-weight: 400;
+
+                color : white;
+            }
+        }
+    }
 }
+
+
 

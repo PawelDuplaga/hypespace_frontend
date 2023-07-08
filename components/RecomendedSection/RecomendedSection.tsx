@@ -1,17 +1,20 @@
+import { useMemo } from "react"
 import ProductViewTemplateA from "../ProductViewComponents/ProductViewTemplateA/ProductViewTemplateA"
-import './RecomendedSection.scss'
+import styles from './RecomendedSection.module.scss'
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 
 type ProductProps = {
     products: PricedProduct [];
 }
 
-const RecomendedSection : React.FC<ProductProps> = ({products}) => {
+const RecomendedSection = ({products} : ProductProps) => {
 
-    if ( products != undefined && products.length > 3)
-    products = products.slice(0,3)
+    const mappedRecommended = useMemo(() => mapRecomendedSection() , [products])
 
     function mapRecomendedSection () {
+        if ( products != undefined && products.length > 3)
+        products = products.slice(0,3)
+
         return products.map((product) => (
             <ProductViewTemplateA
                key = {product.id}
@@ -21,9 +24,9 @@ const RecomendedSection : React.FC<ProductProps> = ({products}) => {
     }
 
     return (
-        <div className="SECTION_1 recomended-container">
-            <div className="Frame-64 section-title">Polecamy</div>
-            <div className="Frame 189 product-list">{mapRecomendedSection()}</div>
+        <div className={styles.recomendedContainer}>
+            <div className={styles.sectionTitle}>Polecamy</div>
+            <div className={styles.productList}>{mappedRecommended}</div>
         </div>
     )
 }

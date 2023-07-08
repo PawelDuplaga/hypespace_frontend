@@ -3,13 +3,16 @@ import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import Image from 'next/image'
 import { formatVariantPrice } from "medusa-react"
 import getRegion from '@/lib/const/regionInfo'
-
+import { useItemBucketStore } from '@/lib/state/ItemBucketStore';
 
 type ProductProps = {
     product : PricedProduct
 }
 
 const ProductViewTemplateB = ({product : {title, thumbnail, variants}} : ProductProps) =>{
+
+    const {upCount} = useItemBucketStore()
+
 
     return (
         <div className={styles.productViewMainContainer}>
@@ -19,7 +22,7 @@ const ProductViewTemplateB = ({product : {title, thumbnail, variants}} : Product
                     alt={title as string}
                     width={1000}
                     height={1000}
-                    style={{width:'100%', height:'auto', objectFit:'cover'}} 
+                    style={{width:'100%', height:'248px', objectFit:'cover'}} 
                 />
             </div>
             <div className={styles.productInfoContainer}>
@@ -30,7 +33,7 @@ const ProductViewTemplateB = ({product : {title, thumbnail, variants}} : Product
                     <div className={styles.productPriceFlexbox}>
                         { variants &&
                         <p className={styles.productPrice}>{formatVariantPrice({variant: variants[0], region : getRegion()})}</p> }
-                        <div className={styles.basketCircleIcon}>
+                        <div className={styles.basketCircleIcon} onClick={upCount}>
                             <div className={styles.circle}>
                                 <Image 
                                     className='basketIcon'

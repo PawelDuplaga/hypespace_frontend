@@ -46,11 +46,13 @@ function AllProductsPage() {
 
     return (
         <div className={styles.productPageMain}>
-            <div className={styles.productGridContainer}>
-                {pageProducts && mapProductRow(pageProducts)}
-                {pageProducts && mapProductRow(pageProducts)}
-                {pageProducts && mapProductRow(pageProducts)}
-                {pageProducts && mapProductRow(pageProducts)}
+            <div className={styles.productsContainer}>
+                <div className={styles.productGridContainer}>
+                    {pageProducts && mapProductRow(pageProducts)}
+                    {pageProducts && mapProductRow(pageProducts)}
+                    {pageProducts && mapProductRow(pageProducts)}
+                    {pageProducts && mapProductRow(pageProducts)}
+                </div>
             </div>
         </div>
     )

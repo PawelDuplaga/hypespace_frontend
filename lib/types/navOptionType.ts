@@ -1,7 +1,7 @@
 type NavOptionType = {
     name: string
     icon?: string
-    link?: string
+    link: string
 }
 
 export type {NavOptionType}
