@@ -9,6 +9,7 @@ import StaticCarousel from '@/components/Carousel/StaticCarousel/StaticCarousel'
 import { medusaClient } from '@/lib/utils/medusaUtils'
 import { PricedProduct, PricedVariant } from "@medusajs/medusa/dist/types/pricing"
 import { useState, useEffect } from 'react'
+import { useProducts } from 'medusa-react'
 
 
 type PricedProductProps = {
@@ -19,40 +20,47 @@ type PricedProductProps = {
 
 function Home () {
 
-  function getMockProducts (numberOfProducts : number) {
-    const defaultProducts: PricedProductProps[] = [];
-    for (let i = 0; i < numberOfProducts; i++) {
-      const defaultProduct: PricedProductProps = {
-        title: "",
-        thumbnail: "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",  
-      };
-      defaultProducts.push(defaultProduct);
-    }
-    return defaultProducts;
-  }
+  const {products, isLoading} = useProducts()
 
-  const [recommendedProducts, setRecommendedProducts] = useState<PricedProductProps[]>(getMockProducts(3))
-  const [carouselProducts, setCarouselProducts] = useState<PricedProductProps[]>(getMockProducts(12))
+  // function getMockProducts (numberOfProducts : number) {
+  //   const defaultProducts: PricedProductProps[] = [];
+  //   for (let i = 0; i < numberOfProducts; i++) {
+  //     const defaultProduct: PricedProductProps = {
+  //       title: "",
+  //       thumbnail: "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",  
+  //     };
+  //     defaultProducts.push(defaultProduct);
+  //   }
+  //   return defaultProducts;
+  // }
 
-  useEffect( () => {
-    medusaClient.products.list({limit : 3})
-    .then(({ products }) => {
-        setRecommendedProducts(products.map((prod) => ({
-          title: prod.title,
-          thumbnail: prod.thumbnail,
-          variants: prod.variants || [] 
-        })));
-        setCarouselProducts(products)
-    });
+  // const [recommendedProducts, setRecommendedProducts] = useState<PricedProductProps[]>(getMockProducts(3))
+  // const [carouselProducts, setCarouselProducts] = useState<PricedProductProps[]>(getMockProducts(12))
+
+  // useEffect( () => {
+  //   medusaClient.products.list({limit : 3})
+  //   .then(({ products }) => {
+  //       setRecommendedProducts(products.map((prod) => ({
+  //         title: prod.title,
+  //         thumbnail: prod.thumbnail,
+  //         variants: prod.variants || [] 
+  //       })));
+  //       setCarouselProducts(products)
+  //   });
     
-  }, []);
+  // }, []);
+
+
+
 
   return (
     <div className={styles.main}>
       <HeroSection/>
-      <RecomendedSection products={recommendedProducts} />
+      <RecomendedSection 
+        isLoading={isLoading} 
+        products={products} />
       <HeroSectionB/>
-      <StaticCarousel products={carouselProducts}/> 
+      {/* <StaticCarousel products={carouselProducts}/>  */}
     </div>
   )
 }
