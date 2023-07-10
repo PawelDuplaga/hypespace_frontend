@@ -22,7 +22,6 @@ function Home () {
 
   const {products, isLoading} = useProducts()
 
-
   return (
     <div className={styles.main}>
       <HeroSection/>

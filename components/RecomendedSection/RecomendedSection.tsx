@@ -4,6 +4,7 @@ import { useMemo } from "react"
 import ProductViewTemplateA from "../ProductViewComponents/ProductViewTemplateA/ProductViewTemplateA"
 import styles from './RecomendedSection.module.scss'
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
+import ProductViewTemplateASkeleton from "../ProductViewComponents/ProductViewTemplateA/ProductViewTemplateASkeleton/ProductViewTemplateASkeleton"
 
 type ProductProps = {
     isLoading: boolean
@@ -11,8 +12,6 @@ type ProductProps = {
 }
 
 const RecomendedSection = ({isLoading, products} : ProductProps) => {
-
-    const mappedRecommended = useMemo(() => mapRecomendedSection() , [products])
 
     function mapRecomendedSection () {
             products = products?.slice(0,3)
@@ -25,21 +24,23 @@ const RecomendedSection = ({isLoading, products} : ProductProps) => {
         }
     
     function mapSkeletons () {
-        
+        return Array.from({ length: 3 }).map((_, index) => (
+            <ProductViewTemplateASkeleton key={index} />
+          ))
     }
 
     return (
         <div className={styles.recomendedContainer}>
-            <div className={styles.sectionTitle}>Polecamy</div>
-            <div></div>
-            <div className={styles.productList}>{products?.map((product) => (
-                <ProductViewTemplateA
-                    key = {product.id}
-                    product={product}
-                /> 
-            ))}</div>
+          <div className={styles.sectionTitle}>Polecamy</div>
+          <div className={styles.productList}>
+            {isLoading ? (
+              mapSkeletons()
+            ) : (
+              mapRecomendedSection()
+            )}
+          </div>
         </div>
-    )
+      );
 }
 
 export default RecomendedSection
