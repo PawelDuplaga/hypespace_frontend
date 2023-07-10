@@ -5,6 +5,8 @@
     height: 480px;
     // overflow-x: hidden;
 
+    
+
     .movingDiv {
         position: absolute;
         z-index: 1;
@@ -17,6 +19,13 @@
         caret-color: transparent;
         display: flex;
         gap: 20px;
+
+
+        .carouselTextBox{
+            height: 480px;
+            
+        }
+
     }
 
     .default {

@@ -1,26 +1,15 @@
 'use client'
 
 import styles from './page.module.css'
-import Navbar from '@/components/Navbar/Navbar'
 import HeroSection from '@/components/Hero/HeroSection/HeroSection'
 import RecomendedSection from '@/components/RecomendedSection/RecomendedSection'
 import HeroSectionB from '@/components/Hero/HeroSectionB/HeroSectionB'
-import StaticCarousel from '@/components/Carousel/StaticCarousel/StaticCarousel'
-import { medusaClient } from '@/lib/utils/medusaUtils'
-import { PricedProduct, PricedVariant } from "@medusajs/medusa/dist/types/pricing"
-import { useState, useEffect } from 'react'
 import { useProducts } from 'medusa-react'
-
-
-type PricedProductProps = {
-    title? : string | null | undefined,
-    thumbnail? : string | null | undefined,
-    variants? : PricedVariant []
-}
 
 function Home () {
 
-  const {products, isLoading} = useProducts()
+  //Maybe its better to use this logic in children since will use different queries for different components
+  const {products, isLoading} = useProducts({limit: 3})
 
   return (
     <div className={styles.main}>

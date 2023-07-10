@@ -1,6 +1,3 @@
-'use client'
-
-import { useMemo } from "react"
 import ProductViewTemplateA from "../ProductViewComponents/ProductViewTemplateA/ProductViewTemplateA"
 import styles from './RecomendedSection.module.scss'
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
@@ -14,19 +11,18 @@ type ProductProps = {
 const RecomendedSection = ({isLoading, products} : ProductProps) => {
 
     function mapRecomendedSection () {
-            products = products?.slice(0,3)
-            return products?.map((product) => (
-                <ProductViewTemplateA
-                    key = {product.id}
-                    product={product}
-                /> 
-            )); 
-        }
+        return products?.map((product) => (
+            <ProductViewTemplateA
+                key = {product.id}
+                product={product} /> 
+        )) 
+    }
     
     function mapSkeletons () {
         return Array.from({ length: 3 }).map((_, index) => (
-            <ProductViewTemplateASkeleton key={index} />
-          ))
+            <ProductViewTemplateASkeleton 
+                key={index} />
+        ))
     }
 
     return (
