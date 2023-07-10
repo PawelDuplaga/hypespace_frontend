@@ -22,36 +22,6 @@ function Home () {
 
   const {products, isLoading} = useProducts()
 
-  // function getMockProducts (numberOfProducts : number) {
-  //   const defaultProducts: PricedProductProps[] = [];
-  //   for (let i = 0; i < numberOfProducts; i++) {
-  //     const defaultProduct: PricedProductProps = {
-  //       title: "",
-  //       thumbnail: "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",  
-  //     };
-  //     defaultProducts.push(defaultProduct);
-  //   }
-  //   return defaultProducts;
-  // }
-
-  // const [recommendedProducts, setRecommendedProducts] = useState<PricedProductProps[]>(getMockProducts(3))
-  // const [carouselProducts, setCarouselProducts] = useState<PricedProductProps[]>(getMockProducts(12))
-
-  // useEffect( () => {
-  //   medusaClient.products.list({limit : 3})
-  //   .then(({ products }) => {
-  //       setRecommendedProducts(products.map((prod) => ({
-  //         title: prod.title,
-  //         thumbnail: prod.thumbnail,
-  //         variants: prod.variants || [] 
-  //       })));
-  //       setCarouselProducts(products)
-  //   });
-    
-  // }, []);
-
-
-
 
   return (
     <div className={styles.main}>

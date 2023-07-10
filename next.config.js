@@ -9,6 +9,10 @@ const nextConfig = {
             pathname: '**',
           },
         ],
+      },
+      compiler : {
+        styledComponents: true
+        //do dopytania
       }
 }
 

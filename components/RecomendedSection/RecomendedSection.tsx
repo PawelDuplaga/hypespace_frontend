@@ -15,22 +15,29 @@ const RecomendedSection = ({isLoading, products} : ProductProps) => {
     const mappedRecommended = useMemo(() => mapRecomendedSection() , [products])
 
     function mapRecomendedSection () {
-        if ( products != undefined && products.length > 3){
-            products = products.slice(0,3)
-
-            return products.map((product) => (
+            products = products?.slice(0,3)
+            return products?.map((product) => (
                 <ProductViewTemplateA
-                key = {product.id}
-                product={product}
+                    key = {product.id}
+                    product={product}
                 /> 
-            ));
+            )); 
         }
+    
+    function mapSkeletons () {
+        
     }
 
-    return isLoading ? (<div>isLoading</div>) : (
+    return (
         <div className={styles.recomendedContainer}>
             <div className={styles.sectionTitle}>Polecamy</div>
-            <div className={styles.productList}>{mappedRecommended}</div>
+            <div></div>
+            <div className={styles.productList}>{products?.map((product) => (
+                <ProductViewTemplateA
+                    key = {product.id}
+                    product={product}
+                /> 
+            ))}</div>
         </div>
     )
 }
