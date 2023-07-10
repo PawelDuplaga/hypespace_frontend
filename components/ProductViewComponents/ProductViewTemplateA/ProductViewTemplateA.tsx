@@ -1,8 +1,7 @@
 import styles from './ProductViewTemplateA.module.scss'
 import Image from 'next/image'
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
-import { formatVariantPrice } from "medusa-react"
-import getRegion from '@/lib/const/regionInfo'
+import { getDefaultVariantPrice } from '@/lib/helpers/getVariantPrice'
 
 type ProductProps = {
     product : PricedProduct
@@ -10,10 +9,11 @@ type ProductProps = {
 
 const ProductViewTemplateA = ({product : {title, thumbnail, variants}} : ProductProps) => {
 
-    return (
+
+    return(
         <div className={styles.mainContainer}>
             <div className={styles.producImgContainer}>
-               { thumbnail && 
+            { thumbnail && 
                 <Image 
                     src={thumbnail as string} 
                     alt={thumbnail}
@@ -24,7 +24,7 @@ const ProductViewTemplateA = ({product : {title, thumbnail, variants}} : Product
             </div>
             { variants &&
             <div className={styles.productInfo}>
-                <p>{title} {formatVariantPrice({variant: variants[0], region : getRegion()})}</p> 
+                <p>{title} {getDefaultVariantPrice(variants?.[0])}</p> 
                 <Image 
                     className={styles.arrow} 
                     src="/icons/maki_arrow.svg"

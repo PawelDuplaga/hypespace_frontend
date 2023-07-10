@@ -81,6 +81,13 @@ const StaticCarousel = ({products} : ProductProps) => {
                 className = {classnames(styles.movingDiv, ANIMATION_FAZES[animationFazeIndex])}
                 onTransitionEnd={onTransitionEnd}    
             >
+            <div className={styles.carouselTextBox}>
+                <div className={styles.flexText}>
+                    <h3></h3>
+                    <p></p>
+                </div>
+                <div className={styles.flexButton}></div>
+            </div>
             {mapRecomendedSection()}
             </div>
         </div>

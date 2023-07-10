@@ -9,7 +9,6 @@ type ItemBucketState = {
     removeAllItems : () => void
 }
 
-
 const useItemBucketStore = create<ItemBucketState>()((set) => ({
     itemCount : 0,
     productList : [],
