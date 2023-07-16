@@ -2,13 +2,22 @@ import ProductViewTemplateA from "../ProductViewComponents/ProductViewTemplateA/
 import styles from './RecomendedSection.module.scss'
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import ProductViewTemplateASkeleton from "../ProductViewComponents/ProductViewTemplateA/ProductViewTemplateASkeleton/ProductViewTemplateASkeleton"
+import { getProdPremise } from "@/RequestMock/dataMock"
+import { useState, useEffect, useMemo } from "react"
 
-type ProductProps = {
-    isLoading: boolean
-    products: PricedProduct [] | undefined;
-}
+const RecomendedSection = () => {
 
-const RecomendedSection = ({isLoading, products} : ProductProps) => {
+    const [products, setProducts] = useState<PricedProduct[]>()
+    const mappedSkeletons = useMemo(() => mapSkeletons(), [])
+    const mappedProducts = useMemo(() => mapRecomendedSection(), [products])
+
+    useEffect(() => {
+      getProdPremise(3)
+      .then((products) => {
+        setProducts(products)
+        console.log(products)
+      })
+    },[])
 
     function mapRecomendedSection () {
         return products?.map((product) => (
@@ -29,11 +38,7 @@ const RecomendedSection = ({isLoading, products} : ProductProps) => {
         <div className={styles.recomendedContainer}>
           <div className={styles.sectionTitle}>Polecamy</div>
           <div className={styles.productList}>
-            {isLoading ? (
-              mapSkeletons()
-            ) : (
-              mapRecomendedSection()
-            )}
+            {!!products ? mappedProducts : mappedSkeletons}
           </div>
         </div>
       );
