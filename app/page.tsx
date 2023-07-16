@@ -1,26 +1,20 @@
 'use client'
 
 import styles from './page.module.css'
-import HeroSection from '@/components/Hero/HeroSection/HeroSection'
-import RecomendedSection from '@/components/RecomendedSection/RecomendedSection'
-import HeroSectionB from '@/components/Hero/HeroSectionB/HeroSectionB'
-import { useProducts } from 'medusa-react'
-import StaticCarousel from '@/components/Carousel/StaticCarousel/StaticCarousel'
+import RecomendedSection from '@/components/Page_Main/RecommendedSection/RecomendedSection'
+import HeroSection from '@/components/Page_Main/HeroTop/HeroSection'
+import HeroSectionB from '@/components/Page_Main/HeroBottom/HeroSectionB'
+import StaticCarousel from '@/components/Page_Main/ProductCarousel/StaticCarousel'
 
 function Home () {
-
-  //Maybe its better to use this logic in children since will use different queries for different components
-  const {products, isLoading} = useProducts({limit: 3})
 
   return (
     <div className={styles.main}>
       <HeroSection/>
-      <RecomendedSection 
-        isLoading={isLoading} 
-        products={products} />
+      <RecomendedSection />
       <HeroSectionB/>
-      {products &&
-      <StaticCarousel products={products}/>}
+      {/* {products &&
+      <StaticCarousel products={products}/>} */}
     </div>
   )
 }

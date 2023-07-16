@@ -5,38 +5,28 @@ import { PricedProduct, PricedVariant } from "@medusajs/medusa/dist/types/pricin
 import ProductViewTemplateB from '@/components/ProductViewComponents/ProductViewTemplateB/ProductViewTemplateB'
 import { useState, useEffect } from 'react'
 import styles from './page.module.scss'
+import { getProductsPremise } from '@/RequestMock/dataMock'
+
+
+
+const NUMBER_OF_PRODUCTS_PER_PAGE : number = 16
+
 
 
 
 function AllProductsPage() {
 
-    const [pageProducts, setPageProducts] = useState<PricedProduct[]>()
-    const [pageIndex, setPageIndex] = useState(1)
+    const [products, setProducts] = useState<PricedProduct[]>()
+    const [pageNumber, setPageNumber] = useState<number>()
 
-    useEffect( () => {
-        medusaClient.products.list({limit : 3})
-        .then(({ products }) => {
-            setPageProducts(products);
-        });
-        
-      }, []);
-
-      
-      function mapProductRow (products : PricedProduct[]) {
-        let productRow = []
-        for (let i =0;i<4;i++){
-            productRow.push(
-                //prowizorycznie index 0
-                <ProductViewTemplateB
-                    key={products[0].id}
-                    product={products[0]}
-                />
-            )
-        }
-        return (
-            <div className={styles.productRow}>{productRow}</div>
-        )
-      }
+    useEffect(() => {
+        getProductsPremise(NUMBER_OF_PRODUCTS_PER_PAGE)
+        .then((products) => {
+          setProducts(products)
+          console.log(products)
+        })
+      },[])
+    
       
 
 
@@ -45,16 +35,13 @@ function AllProductsPage() {
 
 
     return (
-        <div className={styles.productPageMain}>
-            <div className={styles.productsContainer}>
-                <div className={styles.productGridContainer}>
-                    {pageProducts && mapProductRow(pageProducts)}
-                    {pageProducts && mapProductRow(pageProducts)}
-                    {pageProducts && mapProductRow(pageProducts)}
-                    {pageProducts && mapProductRow(pageProducts)}
-                </div>
-            </div>
-        </div>
+        <div className={styles['grid-container']}>
+            {products?.map((item, index) => (
+              <div className={styles['grid-item']} key={index}>
+                <ProductViewTemplateB product={item}/> 
+              </div>
+            ))}
+          </div>
     )
 }
 

@@ -2,4 +2,9 @@
 
 .mainContainer {
     max-width: var(--max-width);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
+

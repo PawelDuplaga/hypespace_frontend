@@ -2,7 +2,7 @@ import { PricedProduct } from "@medusajs/medusa/dist/types/pricing";
 import { medusaClient } from "@/lib/utils/medusaUtils";
 import { StoreProductsListRes } from "@medusajs/medusa";
 
-const getProdPremise = async (numberOfProducts : number) : Promise<PricedProduct[]> => {
+const getProductsPremise = async (numberOfProducts : number) : Promise<PricedProduct[]> => {
 
     return medusaClient.products.list()
     .then((products) => {
@@ -10,4 +10,4 @@ const getProdPremise = async (numberOfProducts : number) : Promise<PricedProduct
     });
 }
 
-export { getProdPremise }
+export { getProductsPremise }

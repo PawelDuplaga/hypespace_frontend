@@ -4,9 +4,9 @@ import './globals.css'
 import { Inter, Lato } from 'next/font/google'
 import { MedusaProvider } from 'medusa-react'
 import { QueryClient } from '@tanstack/react-query'
-import TopBar from '@/components/TopBar/TopBar'
-import Footer from '@/components/Footer/Footer'
-import Navbar from '@/components/Navbar/Navbar'
+import TopBar from '@/components/Layout/Topbar/TopBar'
+import Footer from '@/components/Layout/Footer/Footer'
+import Navbar from '@/components/Layout/Navbar/Navbar/Navbar'
 import storeInfo from '@/lib/const/storeInfo'
 
 
