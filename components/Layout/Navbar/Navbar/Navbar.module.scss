@@ -27,6 +27,15 @@
             justify-content: center;
             align-items: center;
             gap: 6px;
+
+            .optionLink {
+                text-decoration: none;
+            }
+
+            .optionText {
+                color: #2B2A2B;
+            }
+
         }
     }
 

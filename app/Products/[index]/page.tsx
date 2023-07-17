@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import { medusaClient } from "@/lib/utils/medusaUtils";
 import {PricedProduct, PricedVariant,} from "@medusajs/medusa/dist/types/pricing";
@@ -8,9 +8,11 @@ import styles from "./page.module.scss";
 import { fetchRandomProducts } from "@/RequestMock/dataMock";
 import PageIndexer from "@/components/Page_GridProducts/PageIndexer/PageIndexer";
 
-const NUMBER_OF_PRODUCTS_PER_PAGE: number = 16;
+const NUMBER_OF_PRODUCTS_PER_PAGE : number = 16;
 
-function AllProductsPage() {
+function ProductsGridPage ({params} : {params: {index : number}}) {
+
+
     const [products, setProducts] = useState<PricedProduct[]>();
     const [pageNumber, setPageNumber] = useState<number>(1);
 
@@ -36,10 +38,11 @@ function AllProductsPage() {
                 numberOfPages={10}
                 currentPage={pageNumber}
                 setPageCallback={setPageNumber}
-                
+                mainRoute='products'
             />
         </div>
     );
+
 }
 
-export default AllProductsPage;
+export default ProductsGridPage

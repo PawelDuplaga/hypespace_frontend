@@ -37,7 +37,7 @@ const ProductViewTemplateB = ({product : {title, thumbnail, variants}} : Product
                             <div className={styles.circle}>
                                 <Image 
                                     className='basketIcon'
-                                    src="./icons/cart.svg"
+                                    src="/icons/cart.svg"
                                     alt='basket-icon'
                                     width={24}
                                     height={24}

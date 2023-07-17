@@ -1,9 +1,9 @@
-import ProductViewTemplateA from "../ProductViewComponents/ProductViewTemplateA/ProductViewTemplateA"
 import styles from './RecomendedSection.module.scss'
-import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
-import ProductViewTemplateASkeleton from "../ProductViewComponents/ProductViewTemplateA/ProductViewTemplateASkeleton/ProductViewTemplateASkeleton"
-import { getProductsPremise } from "@/RequestMock/dataMock"
 import { useState, useEffect, useMemo } from "react"
+import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
+import { fetchRandomProducts } from "@/RequestMock/dataMock"
+import ProductViewTemplateA from '@/components/ProductViewComponents/ProductViewTemplateA/ProductViewTemplateA'
+import ProductViewTemplateASkeleton from "@/components/ProductViewComponents/ProductViewTemplateA/ProductViewTemplateASkeleton/ProductViewTemplateASkeleton"
 
 const RecomendedSection = () => {
 
@@ -12,7 +12,7 @@ const RecomendedSection = () => {
     const mappedProducts = useMemo(() => mapRecomendedSection(), [products])
 
     useEffect(() => {
-      getProductsPremise(3)
+      fetchRandomProducts(3)
       .then((products) => {
         setProducts(products)
         console.log(products)
