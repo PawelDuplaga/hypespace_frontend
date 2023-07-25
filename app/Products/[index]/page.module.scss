@@ -1,4 +1,4 @@
-.grid-container {
+.gridContainer {
     display: grid;
     grid-template-columns: repeat(4, 260px);
     justify-content: space-between;
@@ -10,7 +10,7 @@
   
 
 
-  .grid-item {
+  .gridItem {
     background-color: #640c0c;
     text-align: center;
   }
@@ -20,5 +20,18 @@
 .mainContainer {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
+}
+
+
+.gridPageTitle {
+  position: relative;
+  left: 0%;
+  font-size: 30px;  
+}
+
+.titleContainer {
+  width: 100%;
+  margin-top: 60px;
 }
