@@ -1,5 +1,6 @@
 'use client'
 
+import { useProducts } from 'medusa-react'
 import styles from './page.module.css'
 import RecomendedSection from '@/components/Page_Main/RecommendedSection/RecomendedSection'
 import HeroSection from '@/components/Page_Main/HeroTop/HeroSection'
@@ -8,13 +9,17 @@ import StaticCarousel from '@/components/Page_Main/ProductCarousel/StaticCarouse
 
 function Home () {
 
+  const {products, isLoading} = useProducts()
+
+
+
   return (
     <div className={styles.main}>
       <HeroSection/>
       <RecomendedSection />
       <HeroSectionB/>
-      {/* {products &&
-      <StaticCarousel products={products}/>} */}
+      {products &&
+      <StaticCarousel products={products}/>}
     </div>
   )
 }

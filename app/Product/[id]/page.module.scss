@@ -1,0 +1,70 @@
+.pageContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.productViewFlexContainer {
+    max-width: var(--max-width);
+    width: 1120px;
+    display: inline-flex;
+    justify-content: space-between;    
+    background-color: aquamarine;
+    height: 650px;
+
+
+    .productPhotosMainFlex {
+        display: inline-flex;
+        justify-content: space-between;
+        flex-direction: row;
+        width: 57%;
+        min-width: 620px;
+        height: 520px;
+
+    }
+
+    .productContentFlex {
+        height: auto;
+        width: 37.5%;
+        background-color: antiquewhite;
+
+        .nameAndPriceBox {
+
+        }
+
+        .dropdownBox {
+
+        }
+
+    }
+
+}
+
+.verticalCarousel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+.verticalPhotosCarouselBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 434px;
+
+    .carouselPhoto {
+        width: 100px;
+        height: 100px;
+        background-color: bisque;
+    }
+}
+
+.currentImage {
+    position: relative;
+    height: 520px;
+    width: 520px;
+}
