@@ -61,7 +61,7 @@ const StaticCarousel = ({products} : ProductProps) => {
             <button className={styles.buttonRight} onClick={handleClickRightButton}>
                 <Image 
                     className={styles.arrowIconRight} 
-                    src="./icons/maki_arrow.svg" 
+                    src="/icons/maki_arrow.svg" 
                     alt='arrow-icon-right' 
                     width={20}
                     height={20}
@@ -71,7 +71,7 @@ const StaticCarousel = ({products} : ProductProps) => {
             <button className={styles.buttonLeft} onClick={handleClickLeftButton}>
                 <Image 
                     className={styles.arrowIconLeft} 
-                    src="./icons/maki_arrow.svg" 
+                    src="/icons/maki_arrow.svg" 
                     alt="arrow-icon-left" 
                     width={20}
                     height={20}

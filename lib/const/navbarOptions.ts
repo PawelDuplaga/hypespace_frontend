@@ -3,7 +3,7 @@ import { NavOptionType } from "../types/navOptionType";
 const allProducts: NavOptionType = {
     name: "wszystkie produkty",
     icon : "",
-    link : "/Products"
+    link : "/Products/1"
 }
 
 const news: NavOptionType = {

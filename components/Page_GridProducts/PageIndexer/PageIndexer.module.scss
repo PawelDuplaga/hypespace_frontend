@@ -1,0 +1,46 @@
+.indexerMainContainer {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    gap: 8px;
+}
+
+
+.indexerLink {
+    text-decoration: none;
+}
+
+.indexerDots {
+    min-height: 36px;
+    min-width: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.indexerElemDefault {
+    display: flex;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: none;
+    color: #2B2A2B;
+    text-decoration: none;
+}
+
+.indexerElemMarked {
+    display: flex;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: none;
+    background-color: #EF323B;
+    color: #FFFFFF;
+    text-decoration: none;
+
+}

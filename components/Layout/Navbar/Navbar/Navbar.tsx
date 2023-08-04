@@ -19,8 +19,8 @@ export default function Navbar () {
             navbarOptions.map(navbarOption => (
             <div key={navbarOption.name} className={styles.optionContainer}>
                 {navbarOption.icon && <Image src={navbarOption.icon} alt={navbarOption.name} width={20} height={20}/>}
-                <Link href={navbarOption.link}>
-                    <span>{navbarOption.name}</span>
+                <Link className={styles.optionLink} href={navbarOption.link}>
+                    <span className={styles.optionText}>{navbarOption.name}</span>
                 </Link>
             </div>
         )))}

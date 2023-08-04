@@ -1,61 +1,45 @@
-'use client'
+"use client";
 
-import { medusaClient } from '@/lib/utils/medusaUtils'
-import { PricedProduct, PricedVariant } from "@medusajs/medusa/dist/types/pricing"
-import ProductViewTemplateB from '@/components/ProductViewComponents/ProductViewTemplateB/ProductViewTemplateB'
-import { useState, useEffect } from 'react'
-import styles from './page.module.scss'
+import { medusaClient } from "@/lib/utils/medusaUtils";
+import {PricedProduct, PricedVariant,} from "@medusajs/medusa/dist/types/pricing";
+import ProductViewTemplateB from "@/components/ProductViewComponents/ProductViewTemplateB/ProductViewTemplateB";
+import { useState, useEffect } from "react";
+import styles from "./page.module.scss";
+import { fetchRandomProducts } from "@/RequestMock/dataMock";
+import PageIndexer from "@/components/Page_GridProducts/PageIndexer/PageIndexer";
 
-
+const NUMBER_OF_PRODUCTS_PER_PAGE: number = 16;
 
 function AllProductsPage() {
+    const [products, setProducts] = useState<PricedProduct[]>();
+    const [pageNumber, setPageNumber] = useState<number>(1);
 
-    const [pageProducts, setPageProducts] = useState<PricedProduct[]>()
-    const [pageIndex, setPageIndex] = useState(1)
-
-    useEffect( () => {
-        medusaClient.products.list({limit : 3})
-        .then(({ products }) => {
-            setPageProducts(products);
+    useEffect(() => {
+        fetchRandomProducts(NUMBER_OF_PRODUCTS_PER_PAGE).then((products) => {
+            setProducts(products);
+            console.log(products);
         });
-        
-      }, []);
+    }, [pageNumber]);
 
-      
-      function mapProductRow (products : PricedProduct[]) {
-        let productRow = []
-        for (let i =0;i<4;i++){
-            productRow.push(
-                //prowizorycznie index 0
-                <ProductViewTemplateB
-                    key={products[0].id}
-                    product={products[0]}
-                />
-            )
-        }
-        return (
-            <div className={styles.productRow}>{productRow}</div>
-        )
-      }
-      
-
-
-      // narazie mapuje 1 produkt do wszystkich okien
-
-
+    // narazie mapuje 1 produkt do wszystkich okien
 
     return (
-        <div className={styles.productPageMain}>
-            <div className={styles.productsContainer}>
-                <div className={styles.productGridContainer}>
-                    {pageProducts && mapProductRow(pageProducts)}
-                    {pageProducts && mapProductRow(pageProducts)}
-                    {pageProducts && mapProductRow(pageProducts)}
-                    {pageProducts && mapProductRow(pageProducts)}
-                </div>
+        <div className={styles.mainContainer}>
+            <div className={styles["grid-container"]}>
+                {products?.map((item, index) => (
+                    <div className={styles["grid-item"]} key={index}>
+                        <ProductViewTemplateB product={item} />
+                    </div>
+                ))}
             </div>
+            <PageIndexer 
+                numberOfPages={10}
+                currentPage={pageNumber}
+                setPageCallback={setPageNumber}
+                
+            />
         </div>
-    )
+    );
 }
 
-export default AllProductsPage
+export default AllProductsPage;

@@ -6,6 +6,7 @@
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
+  
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -23,6 +24,12 @@
     rgba(255, 255, 255, 0)
   );
 
+  --dark-primary: #2B2A2B;
+  --ligh-grey-background: #EFF0F0;
+  --dark-primary-filter : invert(16%) sepia(5%) saturate(146%) hue-rotate(251deg) brightness(94%) contrast(97%);
+  --green-primary: invert(56%) sepia(17%) saturate(2235%) hue-rotate(63deg) brightness(96%) contrast(77%);
+
+  
   --tile-start-rgb: 239, 245, 249;
   --tile-end-rgb: 228, 232, 233;
   --tile-border: conic-gradient(

@@ -13,7 +13,8 @@ const nextConfig = {
       compiler : {
         styledComponents: true
         //do dopytania
-      }
+      },
+    
 }
 
 module.exports = nextConfig
