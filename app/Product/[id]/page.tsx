@@ -1,28 +1,37 @@
 'use client'
 
-import { useProduct } from "medusa-react"
-import { useMemo, useRef, useState } from "react"
-import { getDefaultVariantPrice } from "@/lib/helpers/getVariantPrice"
-import { Select, SelectItem } from "@mantine/core"
-import NCounter from "@/components/Reusable/NCounter/NCounter"
-import styles from './page.module.scss'
-import Image from "next/image"
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { Settings } from "react-slick";
-import { PricedProduct, PricedVariant } from "@medusajs/medusa/dist/types/pricing"
-//import ImageGallery from "react-image-gallery"
+import Image from 'next/image';
+import NCounter from '@/components/Reusable/NCounter/NCounter';
+import styles from './page.module.scss';
+import { getDefaultVariantPrice } from '@/lib/helpers/getVariantPrice';
+import { PricedProduct, PricedVariant } from '@medusajs/medusa/dist/types/pricing';
+import { Select, SelectItem, Collapse } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { useMemo, useState } from 'react';
+import { useProduct, useProducts } from 'medusa-react';
+import StaticCarousel from '@/components/Page_Main/ProductCarousel/StaticCarousel';
+
+interface ShipTimeProps {
+    when : string
+}
+
+const loremIpsum : string = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatu"
+
 
 
 
 const ProductPage = ({params} : {params: {id : string}})  => {
 
+    const [opened, { toggle }] = useDisclosure(false);
     const [productCount, setProductCount] = useState(1)
     const [selectedVariant, setSelectedVariant] = useState<string | null>(null)
-    const {product, isLoading} = useProduct(params.id)
-    const mockedSelectOptions = useMemo(() => {
-        if (!product || !product.variants) {return []}
+    const {product} = useProduct(params.id)
+    const {products} = useProducts()
+
+    const mappedSelectOptions = useMemo(() => {
+        if (!product || !product.variants) {return [
+            {label: "undefined", value: "-"}
+        ]}
 
         return product.variants?.map((variant: PricedVariant): SelectItem => ({
           value: variant.id || "",
@@ -30,16 +39,75 @@ const ProductPage = ({params} : {params: {id : string}})  => {
         }));
       }, [product]);
 
+    const mappedProductAttributes = useMemo(()  =>  {
+        if (!product || selectedVariant === null) {
+            return [
+                //simple mock
+                {title: "Waga", value :24 },
+                {title: "Długość", value :11 },
+                {title: "Wysokość", value :22 },
+                {title: "Szerokość", value :22 },
+                {title: "Materiał", value :"DREWNO" }
+            ]
+            
+        }
+        
+        const variantObject = product.variants.find((variant) => variant.id === selectedVariant);
+
+        return [
+            {title: "Waga", value : variantObject?.weight },
+            {title: "Długość", value: variantObject?.length},
+            {title: "Wysokość", value: variantObject?.height},
+            {title: "Szerokość", value: variantObject?.width},
+            {title: "Materiał", value: variantObject?.material}
+        ]
+      
+    }, [selectedVariant])
+
     //czy da sie to jakos lepiej rozwiazac, ladniej w sensie
+
+    const setCounterCallback = (value : number) => {
+        if (value < 0) {
+            setProductCount(0)
+        } else {
+            setProductCount(value)
+        }
+    }
 
     const AddToBasketBtn = () => {
         return (
-            <button>
-                
+            <button className={styles.basketBtn}>
+                <div className={styles.basketBtnFlex}>
+                    <p>DODAJ DO KOSZYKA</p>
+                    <div className={styles.basketIcon}>
+                        <Image
+                            src="/icons/cart.svg"
+                            alt="cart-icon"
+                            width={20}
+                            height={20}
+                        />
+                    </div>
+                </div>
             </button>
         )
     }
 
+    const ShipTimeInfo = ({when} : ShipTimeProps) => {
+        return (
+            <div className={styles.shipTimeBox}>
+                <div className={styles.shipTimeFlex}>
+                    <Image className={styles.sendSvg}
+                        src="/icons/send.svg"
+                        alt="send-icon"
+                        width={24}
+                        height={24}
+                    />
+                    <p>Wysyłka <span style={{color : "#42AA28", fontWeight: "500" }}>{when}</span></p>
+                </div>
+
+            </div>
+        )
+    }
 
     return (
         <div className={styles.pageContainer}>
@@ -48,7 +116,7 @@ const ProductPage = ({params} : {params: {id : string}})  => {
                     <div className={styles.verticalCarousel}>
                         <div className={styles.arrowUpIcon}>
                             <Image 
-                                src="/icons/maki_arrow.svg"
+                                src="/icons/arrow-up.svg"
                                 alt="arrow-up-icon"
                                 height={32}
                                 width={32}
@@ -56,17 +124,32 @@ const ProductPage = ({params} : {params: {id : string}})  => {
                         </div>
                         {/* prowizorka */}
                         <div className={styles.verticalPhotosCarouselBox}>
-                            <div className={styles.carouselPhoto}></div>
-                            <div className={styles.carouselPhoto}></div>
-                            <div className={styles.carouselPhoto}></div>
-                            <div className={styles.carouselPhoto}></div>
+                        {[0, 1, 2, 3].map((index) => {
+                            const item = product?.images?.[index];
+                            return (
+                                <div key={index} className={styles.carouselPhoto}>
+                                {item ? (
+                                    <Image
+                                    src={item.url}
+                                    alt={product.title || "product-photo"}
+                                    width={100}
+                                    height={100}
+                                    style={{ objectFit: "cover" }}
+                                    />
+                                ) : (
+                                    <div className={styles.carouselPhoto}></div>
+                                )}
+                                </div>
+                            );
+                            })}
                         </div>
                         <div className={styles.arrowDownIcon}>
                             <Image 
-                                src="/icons/maki_arrow.svg"
-                                alt="arrow-up-icon"
+                                src="/icons/arrow-up.svg"
+                                alt="arrow-down-icon"
                                 height={32}
                                 width={32}
+                                style={{ transform: "rotate(180deg) scale(1, 1)"}}
                             />
                         </div>
                     </div>
@@ -89,47 +172,95 @@ const ProductPage = ({params} : {params: {id : string}})  => {
                 </div>
                 <div className={styles.productContentFlex}>
                      <div className={styles.nameAndPriceBox}>
-                        <h2>{product?.title}</h2>
+                        <h2 className={styles.productTitle}>{product?.title}</h2>
                         {product?.variants &&
-                        <p>{getDefaultVariantPrice(product.variants[0])}</p>}
+                        <p className={styles.productPrice}>{getDefaultVariantPrice(product.variants[0])}</p>}
                      </div>
-                     <div className={styles.dropdownBox}>
                         <Select
-                            label="Rozmiar"
+                        //nie stylizuje sie dopoki nie dostanie contentu ??? WHY
+                        //po odswiezeniu bez cache sie nie stylizuje przez 0.5s
+                            label="Rozmiar:"
                             placeholder="Wybierz rozmiar"
                             value={selectedVariant}
                             onChange={(variant) => setSelectedVariant(variant)}
-                            data={mockedSelectOptions}
+                            data={mappedSelectOptions}
                             styles={(theme) => ({
+                                root: {
+                                    width: "100%",
+                                },
+                                label: {
+                                    display: "flex",
+                                    alignItems: "center",
+                                    height: "16px",
+                                    fontSize: "14px",
+                                    fontWeight: "400"
+                                },
                                 dropdown : {
-                                    border : "1px solid #7A7A7A",
+                                    border : "1px solid #2B2A2B",
                                     borderRadius: "0px",
                                     
                                 },
                                 input : {
-                                    border: "1px solid #2B2A2B",
+                                    height: "42px",
+                                    border: "1.5px solid #2B2A2B",
                                     borderRadius: "0px",
+                                    marginTop: "16px",
                                     paddingBottom: "2px",
                                     paddingLeft: "18px",
                                     '&:focus': {
-                                        border: "1px solid #2B2A2B",
+                                        border: "1.5px solid #2B2A2B",
                                     }                                  
                                 }
                             })}
                         />
-                        {selectedVariant}
-                        <NCounter 
-                            fontSize="12px"
-                            widthSpan="114px"
-                            iconSize =  "36"
-                            value={productCount}
-                            callbackFunction={setProductCount}
-
-                        />
-                        <AddToBasketBtn />
-                     </div>
+                        <div className={styles.counterAndButtonFlex}>
+                            <NCounter 
+                                fontSize="12px"
+                                widthSpan="114px"
+                                iconSize ="36px"
+                                value={productCount}
+                                callbackFunction={setCounterCallback}
+                            />
+                            <AddToBasketBtn />
+                        </div>
+                        <ShipTimeInfo when="jutro" />
+                        <div className={styles.collapseInfoBox}>
+                            <div className={styles.collapseLabelFlex}>
+                                <p>Informacje dodatkowe</p>
+                                <button className={styles.arrowButton} onClick={toggle}>
+                                    <Image 
+                                        src="/icons/send.svg"
+                                        alt="arrow-icon"
+                                        width={24}
+                                        height={24}
+                                    />
+                                </button>
+                            </div>
+                            <Collapse in={opened}>
+                                <div className={styles.collapseListFlex}>
+                                {mappedProductAttributes.map((object) => {
+                                    if (object.value) return (
+                                        <div key={object.title} className={styles.productAttributeFlex}>
+                                            <p className={styles.attributeKey}>{object.title}</p>
+                                            <p className={styles.attributeValue}>{object.value}</p>
+                                        </div>
+                                    );
+                                    else return null;
+                                })}
+                                </div>
+                            </Collapse>
+                        </div>
                 </div>
             </div>
+            <div className={styles.productDescriptionBox}>
+                <p className={styles.productDescriptionBoxTitle}>OpisProduktu</p>
+                <p className={styles.productDescriptionBoxText}>{loremIpsum}</p>
+            </div>
+            { products &&
+            <StaticCarousel 
+                products={products}
+            /> }
+            
         </div>
        
 

@@ -1,6 +1,6 @@
 'use client'
 
-import './globals.css'
+import './globals.scss'
 import { Inter, Lato } from 'next/font/google'
 import { MedusaProvider } from 'medusa-react'
 import { QueryClient } from '@tanstack/react-query'

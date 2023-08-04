@@ -14,14 +14,21 @@ const NCounter = ({iconSize, widthSpan, fontSize, value, callbackFunction}: NCou
 
 
     return (
-        <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", width : widthSpan}}>
+        <div style={{
+            display: "flex", 
+            alignItems: "center", 
+            justifyContent: "space-between",
+            margin : "1px 1px", 
+            width : widthSpan, 
+            height: iconSize }}>
             <div>
                 <button className={styles.clearButton} onClick={() => callbackFunction(value - 1)}>
                     <Image 
                         src="/icons/NCounter/minusIcon.svg"
                         alt="minus-icon"
-                        width={parseInt(iconSize)}
-                        height={parseInt(iconSize)}
+                        width={50}
+                        height={50}
+                        style={{height: iconSize, width: iconSize}}
                     />
                 </button>
             </div>
@@ -31,8 +38,9 @@ const NCounter = ({iconSize, widthSpan, fontSize, value, callbackFunction}: NCou
                     <Image 
                         src="/icons/NCounter/plusIcon.svg"
                         alt="plus-icon"
-                        width={parseInt(iconSize)}
-                        height={parseInt(iconSize)}
+                        width={50}
+                        height={50}
+                        style={{height: iconSize, width: iconSize}}
                     />
                 </button>
             </div>

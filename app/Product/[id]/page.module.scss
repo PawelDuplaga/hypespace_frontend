@@ -1,8 +1,12 @@
+@import "/app/styles.scss";
+
 .pageContainer {
     display: flex;
+    flex-direction: column;
     width: 100%;
     justify-content: center;
     align-items: center;
+    margin-top: 40px;
 }
 
 .productViewFlexContainer {
@@ -10,7 +14,7 @@
     width: 1120px;
     display: inline-flex;
     justify-content: space-between;    
-    background-color: aquamarine;
+    background-color: transparent;
     height: 650px;
 
 
@@ -25,16 +29,93 @@
     }
 
     .productContentFlex {
+        margin-top: 42px;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: transparent;
+        gap: 32px;
         height: auto;
         width: 37.5%;
-        background-color: antiquewhite;
 
         .nameAndPriceBox {
+            display: flex;
+            width: 100%;
+            height: 115px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 32px;
 
+            .productTitle{
+                color: $dark-primary;
+                font-family: Lato;
+                font-size: 22px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+
+                height: 26px;
+            }
+            .productPrice{
+                color: $dark-primary;
+                font-family: Lato;
+                font-size: 26px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+
+                height: 31px;
+            }
         }
 
-        .dropdownBox {
+        .counterAndButtonFlex {
 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            gap : 24px;
+
+            .basketBtn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+                border: none;
+                flex-grow: 1;
+                min-width: 200px;
+                height: 50px;
+    
+                .basketBtnFlex {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 16px;
+                    gap : 12px;
+
+                    .basketIcon{
+                        padding-top: 2px;
+                    }
+    
+                }
+    
+            }
+        }
+
+        .shipTimeBox {
+            display: flex;
+            align-items: center;
+            height: 42px;
+            width: 100%;
+            min-width: 200px;
+            padding-left: 28px;
+            border: 1.5px solid $light-grey-background;
+
+            .shipTimeFlex{
+                display: flex;
+                gap: 8px;
+                align-items: center;
+            }
         }
 
     }
@@ -59,7 +140,7 @@
     .carouselPhoto {
         width: 100px;
         height: 100px;
-        background-color: bisque;
+        background-color: $light-grey-background;
     }
 }
 
@@ -67,4 +148,85 @@
     position: relative;
     height: 520px;
     width: 520px;
+}
+
+
+.sendSvg {
+    filter: $dark-primary-filter
+
+}
+
+
+.collapseInfoBox{
+    width: 100%;
+
+    .collapseLabelFlex{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .arrowButton{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        border: none;
+    }
+
+    .collapseListFlex{
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+
+
+.productAttributeFlex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.arrowUpIcon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrowDownIcon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.productDescriptionBox{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: var(--max-width);
+}
+
+.attributeKey{
+    color : $dark-primary;
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+
+.attributeValue{
+    color:  #7A7A7A;
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 142.857% */
 }

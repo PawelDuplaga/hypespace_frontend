@@ -1,6 +1,7 @@
 'use client'
 
 import styles from './ProductViewTemplateB.module.scss'
+import Link from 'next/link'
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import Image, { ImageLoader, ImageLoaderProps } from 'next/image'
 import { formatVariantPrice } from "medusa-react"
@@ -11,7 +12,7 @@ type ProductProps = {
     product : PricedProduct
 }
 
-const ProductViewTemplateB = ({product : {title, thumbnail, variants}} : ProductProps) =>{
+const ProductViewTemplateB = ({product : {title, thumbnail, variants, id}} : ProductProps) =>{
 
     const ImageLoader = () => {
         return thumbnail || `/loaders/spinnerImg.svg`
@@ -32,7 +33,9 @@ const ProductViewTemplateB = ({product : {title, thumbnail, variants}} : Product
             <div className={styles.productInfoContainer}>
                 <div className={styles.productInfo}>
                     <div className={styles.productNameFlexbox}>
+                        <Link className={styles.productLink} href={`/Product/${id}`}>
                         <p className={styles.productName}>{title}</p>
+                        </Link>
                     </div>
                     <div className={styles.productPriceFlexbox}>
                         { variants &&
