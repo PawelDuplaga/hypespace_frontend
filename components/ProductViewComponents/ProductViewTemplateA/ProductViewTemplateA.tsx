@@ -16,9 +16,11 @@ const ProductViewTemplateA = ({product : {title, thumbnail, variants}} : Product
             { thumbnail && 
                 <Image 
                     src={thumbnail as string} 
+                    // alt powinien byc zrozumiala nazwa
                     alt={thumbnail}
                     width={1000}
                     height={1000}
+                    // do styli
                     style={{width: '100%', height:'100%', objectFit: 'cover'}}
                 /> }
             </div>

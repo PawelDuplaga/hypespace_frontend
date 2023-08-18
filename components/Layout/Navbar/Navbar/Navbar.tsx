@@ -8,12 +8,13 @@ import navbarOptions from '@/lib/const/navbarOptions';
 import { useItemBucketStore } from '@/lib/state/ItemBucketStore';
 //czy nie lepiej zrobic osobny komponent dla koszyka zeby nav nie musial uzywac klienta
 
+// staramy sie uzywac arrow functions
 export default function Navbar () {
 
     const mappedNav = useMemo(() => mapNavbarOptions(), []);
     const {itemCount} = useItemBucketStore();
 
-
+    // staramy sie uzywac arrow functions
     function mapNavbarOptions() {
         return (
             navbarOptions.map(navbarOption => (
@@ -35,6 +36,7 @@ export default function Navbar () {
                             alt='hypespace-logo'
                             height={1000}
                             width={1000}
+                            // czemu nie przeniesione do pliku ze stylami
                             style={{height:'100%', width:'auto'}}
                         /> 
                     </div>

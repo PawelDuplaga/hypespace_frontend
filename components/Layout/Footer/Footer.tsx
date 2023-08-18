@@ -2,10 +2,12 @@ import styles from './page.module.scss'
 import Image from 'next/image';
 import { StoreInfoType } from '@/lib/types/storeInfoType';
 
+// typy zwykle wrzucamy do pliku types.ts w tym samym folderze co komponent
 type StoreInfoParam = {
     storeInfo : StoreInfoType
 }
 
+// dodaj sobie ESLinta do VSCode i Prettiera bo jest duzo niepotrzebnych linii, pozjadanych znakow itp
 const Footer = ({storeInfo} : StoreInfoParam) => {
 
     const { openingHours } = storeInfo
@@ -28,13 +30,16 @@ const Footer = ({storeInfo} : StoreInfoParam) => {
                     <div className={styles.infoBracketTopPart}>
                         <div className={styles.flexShopInfo}>
                             <div className={styles.categoryTitleSklep}>
+                                {/* raczej text-transform uppercase */}
                                 <p>SKLEP STACJONARNY</p>
                             </div>
+                                {/* czemu nie .map-y? */}
                                 <div className={styles.flexCompanyAddress}>
                                     <p>{storeInfo.name}</p>
                                     <p>{storeInfo.address}</p>
                                     <p>{storeInfo.address2}</p>
                                 </div>
+                                {/* tu tez */}
                                 <div className={styles.flexCompanyAddress}>
                                     <p>{openingHours.mondayToFriday}</p>
                                     <p>{openingHours.saturday}</p>
@@ -43,6 +48,7 @@ const Footer = ({storeInfo} : StoreInfoParam) => {
                         </div>
                         <div className={styles.flexCategory}>
                             <div className={styles.categoryTitle}>
+                                {/* raczej text-transform uppercase */}
                                 <p>PRODUKTY</p>
                             </div>
                             <div className={styles.flexCategory2}>
@@ -53,6 +59,7 @@ const Footer = ({storeInfo} : StoreInfoParam) => {
                         </div>
                         <div className={styles.flexCategory}>
                             <div className={styles.categoryTitle}>
+                                {/* raczej text-transform uppercase */}
                                 <p>INFORMACJE</p>
                             </div>
                             <div className={styles.flexCategory2}>
@@ -64,10 +71,12 @@ const Footer = ({storeInfo} : StoreInfoParam) => {
                     <div className={styles.InfoBracketBottomPart}>
                         <div className={styles.splitLine}></div>
                         <div className={styles.NamesLogosPart}>
+                            {/* lepiej korzystac z funkcji date.now() bo za rok bedzie trzeba to poprawiac */}
                             <p>
                                 ©2023 Hypespace
                             </p>
                             <div className={styles.paymentAgents}>
+                                {/* czemu nie map i czemu style w innym pliku? */}
                                 <Image 
                                     src="/png/paymentAgentsLogos/PayU.png"
                                     alt='payU-logo'

@@ -1,3 +1,4 @@
+// czemu nie server side?
 'use client'
 
 import {PricedProduct, PricedVariant,} from "@medusajs/medusa/dist/types/pricing";
@@ -10,6 +11,7 @@ import { useProduct } from "medusa-react";
 
 const NUMBER_OF_PRODUCTS_PER_PAGE : number = 16;
 
+// moze byc po prostu ProductsPage albo Listing
 function ProductsGridPage ({params} : {params: {index : string}}) {
 
 
@@ -18,17 +20,19 @@ function ProductsGridPage ({params} : {params: {index : string}}) {
     useEffect(() => {
         fetchRandomProducts(NUMBER_OF_PRODUCTS_PER_PAGE).then((products) => {
             setProducts(products);
+            co tutaj?
             console.log(params.index)
             //console.log(products);
         });
     }, []);
 
+    // ???
     useProduct
 
 
     
     // narazie mapuje 1 produkt do wszystkich okien
-
+    // to dziala z tym wgl?
     const currPage = parseInt
 
     return (
@@ -39,6 +43,7 @@ function ProductsGridPage ({params} : {params: {index : string}}) {
             <div className={styles.horizontalLine}></div>
             <div className={styles.gridContainer}>
                 {products?.map((item, index) => (
+                    // generalnie uzywanie indexa jako klucza traktowane jest jako antypattern
                     <div className={styles.gridItem} key={index}>
                         <ProductViewTemplateB product={item} />
                     </div>
@@ -69,6 +74,7 @@ function ProductsGridPage ({params} : {params: {index : string}}) {
                     },
                   })}
 
+                  // straszna ifologia. Przenioslbym do funkcji a nie w return
                 getControlProps={(control) => {
                 if (control === 'first') {
                     return { component: 'a', href: "/Products/1" };

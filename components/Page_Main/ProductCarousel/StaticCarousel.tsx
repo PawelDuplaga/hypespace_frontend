@@ -47,6 +47,7 @@ const StaticCarousel = ({products} : ProductProps) => {
     }
 
     function mapRecomendedSection ()  {
+        // nawias niepotrzebny
         return (currProducts.map((product) => (
             <ProductViewTemplateB
                 key={product.id}
@@ -83,6 +84,7 @@ const StaticCarousel = ({products} : ProductProps) => {
             >
             <div className={styles.carouselTextBox}>
                 <div className={styles.flexText}>
+                    {/* tu jakies puste elementy */}
                     <h3></h3>
                     <p></p>
                 </div>

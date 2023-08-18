@@ -27,7 +27,7 @@ export default function RootLayout({
           <body className={lato.className}>
           <MedusaProvider 
             queryClientProviderProps={{client: queryClient}}
-            baseUrl='http://localhost:9000'
+            baseUrl='http://localhost:9000' // to bym przeniosl do zmiennej w lib/utils/const.ts
           >
               <TopBar/>
               <Navbar/>

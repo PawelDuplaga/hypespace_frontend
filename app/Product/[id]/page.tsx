@@ -1,3 +1,4 @@
+// czemu nie server side component?
 'use client'
 
 import Image from 'next/image';
@@ -52,6 +53,7 @@ const ProductPage = ({params} : {params: {id : string}})  => {
             
         }
         
+        // co jesli nie znajdzie takiego variantu? (czy to mozliwe?) wtedy zbudowalbym mocka tak jak wyzej
         const variantObject = product.variants.find((variant) => variant.id === selectedVariant);
 
         return [
@@ -67,6 +69,7 @@ const ProductPage = ({params} : {params: {id : string}})  => {
     //czy da sie to jakos lepiej rozwiazac, ladniej w sensie
 
     const setCounterCallback = (value : number) => {
+        // mozna setProductCount(value < 0 ? 0 : value)
         if (value < 0) {
             setProductCount(0)
         } else {
@@ -74,10 +77,12 @@ const ProductPage = ({params} : {params: {id : string}})  => {
         }
     }
 
+    // z tego zrobilbym osobny maly komponent i dodal onClick bo nie ma
     const AddToBasketBtn = () => {
         return (
             <button className={styles.basketBtn}>
                 <div className={styles.basketBtnFlex}>
+                    {/* text transform uppercase */}
                     <p>DODAJ DO KOSZYKA</p>
                     <div className={styles.basketIcon}>
                         <Image
@@ -102,6 +107,7 @@ const ProductPage = ({params} : {params: {id : string}})  => {
                         width={24}
                         height={24}
                     />
+                    {/* do styli */}
                     <p>Wysyłka <span style={{color : "#42AA28", fontWeight: "500" }}>{when}</span></p>
                 </div>
 
@@ -160,6 +166,7 @@ const ProductPage = ({params} : {params: {id : string}})  => {
                             alt={product.title}
                             width={1000}
                             height={1000}
+                            // do styli az sie prosi
                             style={{
                                 position: 'relative', 
                                 width:'100%', 
@@ -179,6 +186,7 @@ const ProductPage = ({params} : {params: {id : string}})  => {
                         <Select
                         //nie stylizuje sie dopoki nie dostanie contentu ??? WHY
                         //po odswiezeniu bez cache sie nie stylizuje przez 0.5s
+                        // a probowales odpalac nexta produkcyjnie? (next build a potem next start bodajze)
                             label="Rozmiar:"
                             placeholder="Wybierz rozmiar"
                             value={selectedVariant}
@@ -238,6 +246,7 @@ const ProductPage = ({params} : {params: {id : string}})  => {
                             </div>
                             <Collapse in={opened}>
                                 <div className={styles.collapseListFlex}>
+                                    {/* // to bym do jakiegos useMemo wrzucil */}
                                 {mappedProductAttributes.map((object) => {
                                     if (object.value) return (
                                         <div key={object.title} className={styles.productAttributeFlex}>

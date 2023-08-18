@@ -27,6 +27,7 @@ function AllProductsPage() {
         <div className={styles.mainContainer}>
             <div className={styles["grid-container"]}>
                 {products?.map((item, index) => (
+                    // raczej nie uzywamy - w stylach zeby uniknac tego zapisu
                     <div className={styles["grid-item"]} key={index}>
                         <ProductViewTemplateB product={item} />
                     </div>
