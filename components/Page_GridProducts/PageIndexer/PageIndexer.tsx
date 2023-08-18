@@ -25,7 +25,7 @@ function fillArrayFromXToY(startIndex: number, endIndex : number) {
 }
 
 
-
+// Strasznie skomplikowany komponent. Nie czaje o co w nim chodzi XD
 const PageIndexer = ({ numberOfPages, currentPage, setPageCallback, mainRoute }: IndexerProps) => {
 
 

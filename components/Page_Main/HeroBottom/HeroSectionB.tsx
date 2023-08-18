@@ -24,8 +24,10 @@ export default function HeroSectionB () {
                     <p className={styles.bigText}>{heroBText1}</p>
                     <p className={styles.smallText}>{heroBText2}</p>
                 </div>
+                {/* ten button nic nie robi */}
                 <button className={styles.buttonContainer}>
                     <p>{buttonText}</p>
+                    {/* <Image /> */}
                     <img className="arrow-icon" src="./icons/maki_arrow.svg" alt='arrow-icon'/>
                 </button>
             </div>

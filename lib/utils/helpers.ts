@@ -1,3 +1,4 @@
+// to potrzebne?
 function getRandomElements<T>(array: T[], numberOfElem : number): T[] {
     const randomElements: T[] = [];
   

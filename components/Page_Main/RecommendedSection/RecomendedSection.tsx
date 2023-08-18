@@ -8,6 +8,8 @@ import ProductViewTemplateASkeleton from "@/components/ProductViewComponents/Pro
 const RecomendedSection = () => {
 
     const [products, setProducts] = useState<PricedProduct[]>()
+    // czemu nie wrzucic zawartosci tych funkcji do srodka useMemo?
+    // tu wlasciwie moglobybyc jedno useMemo ktore sprawdza czy sa produkty, a jesli nie to mapuje i generuje ProductViewTemplateASkeleton
     const mappedSkeletons = useMemo(() => mapSkeletons(), [])
     const mappedProducts = useMemo(() => mapRecomendedSection(), [products])
 
@@ -15,6 +17,7 @@ const RecomendedSection = () => {
       fetchRandomProducts(3)
       .then((products) => {
         setProducts(products)
+        // do usuniecia
         console.log(products)
       })
     },[])

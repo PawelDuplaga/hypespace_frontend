@@ -1,5 +1,6 @@
 'use client'
 
+// nieuzywane importy
 import styles from './ProductViewTemplateB.module.scss'
 import Link from 'next/link'
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
@@ -34,11 +35,13 @@ const ProductViewTemplateB = ({product : {title, thumbnail, variants, id}} : Pro
                 <div className={styles.productInfo}>
                     <div className={styles.productNameFlexbox}>
                         <Link className={styles.productLink} href={`/Product/${id}`}>
+                            {/* wydaje mi sie ze nie musisz miec p w Link */}
                         <p className={styles.productName}>{title}</p>
                         </Link>
                     </div>
                     <div className={styles.productPriceFlexbox}>
                         { variants &&
+                        // tu troche nieczytelne. Przenioslbym do funkcji w tym komponencie
                         <p className={styles.productPrice}>{formatVariantPrice({variant: variants[0], region : getRegion()})}</p> }
                         <div className={styles.basketCircleIcon}>
                             <div className={styles.circle}>
